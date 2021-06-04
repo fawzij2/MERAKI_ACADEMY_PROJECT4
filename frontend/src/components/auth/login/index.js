@@ -3,9 +3,11 @@ import axios from "axios";
 
 import "./Login.css";
 
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect ,  Route, useHistory } from "react-router-dom";
 
-export default function Login({ setToken }) {
+
+export default function Login({ setToken , path }) {
+    const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
@@ -20,7 +22,8 @@ export default function Login({ setToken }) {
         console.log(res);
         setToken(res.data.token);
         setLoginMessage("login successful");
-        <Redirect />
+        history.push(path);
+        
        
        
       })
