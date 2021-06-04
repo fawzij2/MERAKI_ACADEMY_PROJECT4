@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = reqiuire ("bcrypt");
+const bcrypt = require ("bcrypt");
 
 const cardInfo = new mongoose.Schema({
     cardNumber:{type:Number, required:true},
@@ -12,4 +12,4 @@ CardInfo.pre("save",async function(){
     this.cardNumber = await bcrypt.hash(this.cardNumber,10);
 })
 
-exports.module = mongoose.model("Card", cardInfo)
+module.exports = mongoose.model("Card", cardInfo)

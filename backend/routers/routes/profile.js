@@ -1,5 +1,5 @@
 const express = require("express");
-const { getUserById, getCasesByUser } = require("./../controllers/profile");
+const { getUserById, getCasesByUser } = require("./../controllers/");
 
 const profileRouter = express.Router();
 
