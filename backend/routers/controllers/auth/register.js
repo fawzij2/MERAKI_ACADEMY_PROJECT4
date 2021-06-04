@@ -1,4 +1,5 @@
-const { User } = require("../../db/models/user");
+
+const { User } = require("../../../db/models/user");
 
 const register = (req, res) => {
   const { nickName, email, password, age, city, phoneNo, IBAN ,role} = req.body;
