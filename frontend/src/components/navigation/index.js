@@ -1,27 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./navigation.css"
+import "./navigation.css";
 
 const Navigation = () => {
   return (
-      <div className="navBar">
-        <Link to="/">Home</Link>
-        <div class="dropdown">
-          <button class="dropbtn">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <Link to="/cases">available cases</Link>
-            <Link to="/cases/closed">closed cases</Link>
-          </div>
+    <div className="navBar">
+      <Link to="/" className="links">
+        Home
+      </Link>
+      <div className="dropdown">
+        <button className="dropbtn">
+          cases
+          <i className="fa fa-caret-down"></i>
+        </button>
+        <div className="dropdown-content">
+          <Link to="/cases" className="dropDownLinks">
+            available cases
+          </Link>
+          <Link to="/cases/closed" className="dropDownLinks">
+            closed cases
+          </Link>
         </div>
-		<Link to= "/about">About Us</Link>
-		<Link to= "/volunteers">Our Volunteers</Link>
-		<Link to= "/contactus">Contact Us</Link>
-		<Link to= "/login">Login</Link>
-		<Link to= "/register">Register</Link>
       </div>
+      <Link to="/about" className="links">
+        About Us
+      </Link>
+      <Link to="/volunteers" className="links">
+        Our Volunteers
+      </Link>
+      <Link to="/contactus" className="links">
+        Contact Us
+      </Link>
+      <Link to="/login" className="links logreg">
+        Login
+      </Link>
+      <Link to="/register" className="links logreg">
+        Register
+      </Link>
+    </div>
   );
 };
 
