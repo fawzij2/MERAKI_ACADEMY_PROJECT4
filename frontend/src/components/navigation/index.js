@@ -4,7 +4,6 @@ import "./navigation.css"
 
 const Navigation = () => {
   return (
-    <>
       <div className="navBar">
         <Link to="/">Home</Link>
         <div class="dropdown">
@@ -23,7 +22,6 @@ const Navigation = () => {
 		<Link to= "/login">Login</Link>
 		<Link to= "/register">Register</Link>
       </div>
-    </>
   );
 };
 
