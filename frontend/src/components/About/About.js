@@ -1,5 +1,5 @@
 import react from "react";
-import poor from "./poorChild.jpeg"
+import poor from "./poor.jpg"
 
 const About = () => {
   return (
