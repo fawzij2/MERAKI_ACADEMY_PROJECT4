@@ -5,6 +5,7 @@ import "./navigation.css";
 const Navigation = () => {
   return (
     <div className="navBar">
+      <div className="others">
       <Link to="/" className="links">
         Home
       </Link>
@@ -31,12 +32,15 @@ const Navigation = () => {
       <Link to="/contactus" className="links">
         Contact Us
       </Link>
+      </div>
+      <div className="signing">
       <Link to="/login" className="links logreg">
         Login
       </Link>
       <Link to="/register" className="links logreg">
         Register
       </Link>
+      </div>
     </div>
   );
 };
