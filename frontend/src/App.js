@@ -9,7 +9,7 @@ const App = () => {
     <>
       <div className="App">
         <Navigation />
-        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/" component={Home} />
 		{/* <Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath}/>}/> */}
       </div>
     </>
