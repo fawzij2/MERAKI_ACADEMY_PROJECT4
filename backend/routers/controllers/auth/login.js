@@ -9,6 +9,7 @@ const login = (req, res) => {
   User.findOne({ email: email.toLowerCase() })
     .then((result) => {
       if (!result) {
+       
         res.status = 404;
         res.json("The email doesn't exist");
       } else {
@@ -18,7 +19,7 @@ const login = (req, res) => {
         };
         const options = {
           expiresIn: "4h",
-        };
+        }; 
         const secret = process.env.SECRET;
         const token = jwt.sign(payload, secret, options);
         bcrypt.compare(password, result.password, (err, result_2) => {
@@ -33,6 +34,7 @@ const login = (req, res) => {
       }
     })
     .catch((err) => {
+      
       res.status(500).json(err);
     });
 };

@@ -28,12 +28,10 @@ export default function Login({ setToken , path }) {
        
       })
       .catch((err) => {
-        if (err == "Error: Request failed with status code 404") {
-          setLoginMessage("The email doesn't exist");
-        }
-        if (err == "Error: Request failed with status code 403") {
-          setLoginMessage("The password you entered incorrect");
-        }
+        console.log(err);
+
+        setLoginMessage(err.response.data)
+
       });
   };
 
