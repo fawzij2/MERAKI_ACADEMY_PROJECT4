@@ -1,12 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 /* Navbar container */
 .navBar {
   display: flex;
-  gap: 10px;
+  gap: 40%;
   align-items:flex-end;
   overflow: hidden;
   font-family: Arial;
   border: 3px solid blue;
   height: 100px;
+  width: 100%;
 }
 
 /* Links inside the navbar */
@@ -76,5 +83,12 @@
 
 .logreg{
 position: relative;
-left: 200px;
+float:right;
+}
+.others{
+  float: left;
+}
+
+.signing{
+  float: right;
 }
