@@ -18,6 +18,8 @@ export default function AddNewCase() {
   ];
   const yesNo = ["", "Yes", "No"];
 
+  //register2
+
   const AddCase = () => {
     axios
       .post("http://localhost:5000/cases/create", {
