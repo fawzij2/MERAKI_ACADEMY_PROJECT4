@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import "./AddNewCase";
+import axios from "axios";
 
 export default function AddNewCase() {
   const [caseName, setCaseName] = useState("");
@@ -6,6 +8,7 @@ export default function AddNewCase() {
   const [neededAmount, setNeededAmount] = useState(0);
   const [address, setAddress] = useState("");
   const [isPrivate, setIsPrivate] = useState("Yes");
+  const [message, setMessage] = useState("");
   const branchh = [
     " ",
     "Education",
@@ -13,7 +16,28 @@ export default function AddNewCase() {
     "Restoration",
     "Dept payment",
   ];
-  const yesNo = ["","Yes","No"]
+  const yesNo = ["", "Yes", "No"];
+
+  const AddCase = () => {
+    axios
+      .post("http://localhost:5000/cases/create", {
+        caseName,
+        category,
+        neededAmount,
+        address,
+        isPrivate,
+      })
+      .then((res) => {
+        console.log(res);
+        setMessage("add successfully");
+      })
+      .catch((err) => {
+      if (res.status===400) {
+        setMessage("error");  
+      }  
+        throw err;
+      });
+  };
 
   return (
     <div>
@@ -31,7 +55,7 @@ export default function AddNewCase() {
           <option
             key={index}
             onSelect={() => {
-                setCategory(element)
+              setCategory(element);
               console.log({ element });
             }}
           >
@@ -59,7 +83,7 @@ export default function AddNewCase() {
           <option
             key={index}
             onSelect={() => {
-                setIsPrivate(element)
+              setIsPrivate(element);
               console.log({ element });
             }}
           >
@@ -67,6 +91,8 @@ export default function AddNewCase() {
           </option>
         ))}
       </select>
+      <button onClick={AddCase}>Add</button>
+      <p>message</p>
     </div>
   );
 }
