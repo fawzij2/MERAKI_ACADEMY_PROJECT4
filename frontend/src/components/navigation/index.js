@@ -15,8 +15,7 @@ const Navigation = () => {
           <i className="fa fa-caret-down"></i>
         </button>
         <div className="dropdown-content">
-          {/* <Link to="/cases" className="dropDownLinks"> */}
-          <Link to="" className="dropDownLinks">
+          <Link to="/cases" className="dropDownLinks">
             available cases
           </Link>
           <Link to="/cases/closed" className="dropDownLinks">
