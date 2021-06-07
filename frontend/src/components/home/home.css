@@ -2,3 +2,78 @@
     border: 3px solid yellow;
 }
 
+.categories{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    background-color: #061738;
+    
+}
+
+.mainCategories{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+    color: white;
+}
+
+.introduction{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 20px;
+    /* gap: 30%; */
+    justify-content: center;
+    /* align-items: center; */
+    text-align: left;
+    color: white;
+}
+
+.categoryBox1{
+    background-color: #ffc039;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.categoryBox2{
+    background-color: #14b761;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.categoryBox3{
+    display: flex;
+    background-color: #ffc039;
+    align-items: center;
+    justify-content: center;
+    width: 43%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.categoryBox1, .categoryBox2, .categoryBox3:hover{
+    cursor: pointer;
+}
+.categoriesPics{
+    width: 80%;
+    height: 80%;
+}
+
+.generalPic{
+    width: 80%;
+    height: 80%;
+}
+
+.text{
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.introText{
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
