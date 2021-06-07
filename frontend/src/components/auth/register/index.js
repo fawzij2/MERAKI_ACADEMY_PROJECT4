@@ -31,7 +31,9 @@ export default function Register() {
       phoneNo,
       IBAN,
     });
-    axios
+
+    if (password===confirmPassword) {
+      axios
       .post("http://localhost:5000/register", {
         nickName,
         email,
@@ -56,6 +58,9 @@ export default function Register() {
       .catch((err) => {
         throw err;
       });
+    }
+    else{setRegisterMessage("please check the password")}
+   
   };
 
   return (
