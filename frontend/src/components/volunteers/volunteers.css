@@ -1,0 +1,58 @@
+.volunteers{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.volunteerCards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.volIntro{
+    margin-bottom: 90px;
+}
+
+.volIntroText{
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.volText{
+    text-align: center;
+    font-size: 18px;
+}
+
+.volName{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.volCard{
+    position: relative;
+    width: 20%;
+}
+
+
+@media screen and (max-width:350px) {
+    .volunteerCards{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:768px) and (min-width:350px) {
+    .volunteerCards{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-content: space-around;
+        align-items: center;
+    }
+}
