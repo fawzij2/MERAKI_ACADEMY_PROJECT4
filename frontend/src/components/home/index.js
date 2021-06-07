@@ -1,5 +1,6 @@
 import React from "react";
 import "./home.css";
+import Volunteers from "../volunteers/index"
 
 const Home = ()=>{
     return (<div>
@@ -14,8 +15,8 @@ const Home = ()=>{
         </div>
         {/* <Contact /> */}
         <div className="contact sections">contact us</div>
-        {/* <Volunteers /> */}
-        <div className="colunteers sections">our volunteers</div>
+        <Volunteers />
+        {/* <div className="colunteers sections">our volunteers</div> */}
         <div className="achievements sections">this is what we do</div>
         <div className="copyrights sections">copyrights go here</div>
     </div>)
