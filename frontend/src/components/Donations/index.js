@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 const Donation = require("./../../../../backend/db/models/donations");
- 
 
 export default function Donations() {
-    return (
-        <div>
-            <p></p>
-            <p></p>
-        </div>
-    )
+  const [donations, setDonations] = useState("");
+  useEffect(() => {
+    axios.get("http://localhost:5000/donations").then((res) => {
+      setDonations(res.data);
+    });
+  }, []);
+
+  return <div>donations</div>;
 }
