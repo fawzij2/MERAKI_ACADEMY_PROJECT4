@@ -2,6 +2,9 @@ const Donation = require("../../db/models/donations");
 
 const getAllDonations = (req, res) => {
   Donation.find({})
+    .populate("caseId", "caseName")
+    .populate("donorId", "nickName")
+    .exc()
     .then((result) => {
       res.status(200).json(result);
     })
