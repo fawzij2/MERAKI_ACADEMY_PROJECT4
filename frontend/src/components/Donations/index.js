@@ -9,5 +9,7 @@ export default function Donations() {
     });
   }, []);
 
-  return <div>donations</div>;
+  return <div>{donations && donations.map((donate,index)=>{
+     return <p key={index} >{donate}</p>
+  }) }</div>;
 }

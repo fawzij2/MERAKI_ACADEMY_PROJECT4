@@ -4,6 +4,7 @@ import Navigation from "./components/navigation/index";
 import  Home  from "./components/home/index";
 import About from './components/About/About'
 
+
 const App = () => {
   const [path, setPath] = useState("/");
   return (
