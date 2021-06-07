@@ -5,10 +5,11 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+
 .section {
     box-sizing: border-box;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .Nonprofit{
@@ -38,7 +39,7 @@ p{
 }
 
 .line{
-    border-top: solid 2px brown;
+    border-top: solid 2px rgba(27, 26, 26, 0.287);
     width: 200px;
 }
 
