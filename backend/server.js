@@ -13,6 +13,7 @@ const role = require("./routers/routes/role");
 const profile = require("./routers/routes/profile");
 const authentication = require("./routers/middlewares/authentication");
 const donation = require("./routers/routes/donations");
+const card = require("./routers/routes/card")
 
 //built-in middlewares
 app.use(express.json());
@@ -40,6 +41,9 @@ app.use("/role", role);
 
 //donation router
 app.use("/donations", donation);
+
+//card router
+app.use("/card",card)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
