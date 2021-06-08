@@ -69,7 +69,9 @@ const Home = () => {
         {/* <div className="colunteers sections">our volunteers</div> */}
         <div className="achievements sections">this is what we do</div>
         <div className="copyrights sections">copyrights go here</div>
-    </div>)
+    </div>
+    </div>
+    )
 };
 
 export default Home;
