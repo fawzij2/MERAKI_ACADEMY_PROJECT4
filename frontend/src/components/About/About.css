@@ -1,0 +1,93 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.section {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+}
+
+.Nonprofit{
+    color: rgb(36, 139, 36);
+}
+
+.Helping{
+    color: rgb(246, 154, 7);
+}
+
+p{
+    margin-top: 20px;
+    color: grey;
+}
+
+
+.about {
+    
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.line{
+    border-top: solid 2px rgba(27, 26, 26, 0.287);
+    width: 200px;
+}
+
+.Image {
+    width: 19%;
+    box-shadow: 0 15px 30px 2px grey;
+    border:none;
+}
+
+.aboutImg {
+    width: 100%;
+    height: 60%;
+    border-radius: 20px;
+}
+
+.aboutBody {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.icons {
+    width: 70px;
+}
+
+.iconCaption {
+    font-size: 20px;
+}
+
+.services{
+    display: flex;
+    gap:50px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width:768px) {
+    .about , .services {
+        flex-direction: column;
+    }
+    .Image{
+        width: 50%;
+        height: 20%;
+    }
+}

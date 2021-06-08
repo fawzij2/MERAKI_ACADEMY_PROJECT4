@@ -5,6 +5,7 @@ import "./login.css";
 
 import { useHistory } from "react-router-dom";
 
+
 export default function Login({ setToken, path }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
-          //setToken(res.data.token);
+
           setLoginMessage("login successful");
           history.push(path);
         } else {
@@ -30,10 +31,12 @@ export default function Login({ setToken, path }) {
       .catch((err) => {
         console.log(err);
         setLoginMessage("please try again");
+
       });
   };
 
   return (
+
     <div className="outLogin" >
     <div className="login" >
       <h2 style={{ textAlign: "center" }} >Login</h2>
@@ -61,6 +64,8 @@ export default function Login({ setToken, path }) {
           }}
         />
       </fieldset>
+
+  
       <button className="loginButton" onClick={loginFun}>
         LOGIN
       </button>

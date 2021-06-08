@@ -1,7 +1,12 @@
 const Donation = require("../../db/models/donations");
+const Case = require("../../db/models/case")
+const User = require("../../db/models/user")
 
 const getAllDonations = (req, res) => {
   Donation.find({})
+    .populate("caseId", "caseName  neededAmount  donatedAmount")
+    .populate("donorId", "nickName")
+    .exc()
     .then((result) => {
       res.status(200).json(result);
     })
