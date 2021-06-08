@@ -7,6 +7,7 @@ import ClosedCases from "./components/closedCases/ClosedCases"
 // import AvaliableCases from "./components/AvaliableCase"
 import About from './components/About/About'
 
+
 const App = () => {
   const [path, setPath] = useState("");
   return (
