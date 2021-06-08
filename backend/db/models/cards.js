@@ -5,7 +5,7 @@ const cardInfo = new mongoose.Schema({
     cardNumber:{type:Number, required:true},
     cardHolder: {type:String, required:true},
     expiryDate:{type:String,required:true},
-    userId:{type:mongoose.Schema.ObjectId, ref:"User", required:true}
+    userId:{type:mongoose.Schema.ObjectId, ref:"User"}
 });
 
 CardInfo.pre("save",async function(){

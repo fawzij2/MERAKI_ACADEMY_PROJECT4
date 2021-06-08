@@ -13,11 +13,10 @@ const App = () => {
       <div className="App">
         <Navigation />
         <Route exact path="/" component={Home} />
-		{/* <Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath}/>}/> */}
-		{/* <Route exact path="/cases/categeories/" render={()=><AvaliableCases setPath1={setPath1}/>}/> */}
+		<Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath}/>}/>
+		<Route exact path="/cases/categeories/" render={()=><AvaliableCases setPath1={setPath1}/>}/>
       </div>
-
-      <About/>
+     
     </>
   );
 };
