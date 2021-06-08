@@ -2,26 +2,28 @@ import React,{useState} from "react";
 import { Route } from "react-router-dom";
 import Navigation from "./components/navigation/index";
 import  Home  from "./components/home/index";
-import ClosedCases from "./components/closedCases/ClosedCases"
-//import AvaliableCases from "./components/AvaliableCase"
-import About from './components/About/About'
-import Login from './components/auth/login/index'
-import Register from './components/auth/register/index'
+import ClosedCases from "./components/closedCases/ClosedCases";
+//import AvaliableCases from "./components/AvaliableCase";
+import About from './components/About/About';
+import Login from './components/auth/login/index';
+import Register from './components/auth/register/index';
+import AddNewCase from "./components/AddNewCase/index"
 
 
 const App = () => {
   const [path, setPath] = useState("");
+  const [token, setToken] = useState("");
   return (
     <>
       <div className="App">
         <Navigation />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login}/>
+        <Route exact path="/" render={()=><Home setPath={setPath}/>} />
+        <Route exact path="/login" render={()=><Login path={path} setToken={setToken} />} />
         <Route exact path="/register" component={Register}/>
-
-		<Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath}/>}/>
-
-		{/* <Route exact path="/cases/categeories/" render={()=><AvaliableCases setPath1={setPath1}/>}/> */}
+		    <Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath} />}/>
+		    <Route path="/cases/categeories/:categeory" render={()=><AvaliableCases setPath={setPath} />}/>
+        <Route exact path = "/cases/:id" />
+        <Route exact path="/cases/create" component={AddNewCase} />
       </div>
     </>
   );
