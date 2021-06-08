@@ -11,6 +11,7 @@ import educational from "./educational.png";
 import debt from "./debt.png";
 import building from "./building.png";
 import general from "./general.png";
+import ContactUs from "../contactUs/index"
 import { useHistory } from "react-router-dom";
 
 const Home = () => {
@@ -63,13 +64,15 @@ const Home = () => {
             <p className="text">rebuilding</p>
           </div>
         </div>
+        </div>
         {/* <Contact /> */}
-        <div className="contact sections">contact us</div>
+        <div className="contact sections"><ContactUs/></div>
         <Volunteers />
         {/* <div className="colunteers sections">our volunteers</div> */}
         <div className="achievements sections">this is what we do</div>
         <div className="copyrights sections">copyrights go here</div>
-    </div>)
+    </div>
+    )
 };
 
 export default Home;
