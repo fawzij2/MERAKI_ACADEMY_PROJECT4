@@ -1,6 +1,7 @@
 import React from "react";
 import SimpleImageSlider from "react-simple-image-slider";
 import "./home.css";
+import Volunteers from "../volunteers/index"
 import About from "./../About/About";
 import photo1 from "./photo1.jpg";
 import photo2 from "./photo2.jpg";
@@ -62,15 +63,13 @@ const Home = () => {
             <p className="text">rebuilding</p>
           </div>
         </div>
-      </div>
-      {/* <Contact /> */}
-      <div className="contact sections">contact us</div>
-      {/* <Volunteers /> */}
-      <div className="colunteers sections">our volunteers</div>
-      <div className="achievements sections">this is what we do</div>
-      <div className="copyrights sections">copyrights go here</div>
-    </div>
-  );
+        {/* <Contact /> */}
+        <div className="contact sections">contact us</div>
+        <Volunteers />
+        {/* <div className="colunteers sections">our volunteers</div> */}
+        <div className="achievements sections">this is what we do</div>
+        <div className="copyrights sections">copyrights go here</div>
+    </div>)
 };
 
 export default Home;
