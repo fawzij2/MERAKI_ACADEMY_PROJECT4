@@ -32,7 +32,28 @@ const CaseSearch = ({setPath, id}) => {
   },[])
   return (
     <>
-      <div>
+      <div className="caseSearch">
+          <div className="searchBarSection">
+              <div>
+              Donations Needed 
+              <select name="neededDonations" id="donations">
+                  <option value="500">less than 500</option>
+                  <option value="1000">less than 1000</option>
+                  <option value="5000">less than 5000</option>
+                  <option value="5500">more than 5000</option>
+              </select>
+              </div>
+              <div>
+                  Sort
+                  <select name="sorting" id="sorting">
+                      <option value="highLow">High to low</option>
+                      <option value="lowHigh">Low to High</option>
+                  </select>
+              </div>
+              <div className="searchBar">
+                  <input className="searchBar" placeholder="Enter a case name" />
+              </div>
+          </div>
           {cases}
       </div>
     </>

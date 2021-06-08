@@ -1,0 +1,25 @@
+.caseSearch{
+    width: 100%;
+}
+.searchBarSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.searchBar{
+    position: relative;
+    top: 7px;
+    width: 250px;
+    height: 75%;
+}
+
+#sorting{
+    width: 110%;
+}
+
+#donations{
+    width: 110%;
+}
