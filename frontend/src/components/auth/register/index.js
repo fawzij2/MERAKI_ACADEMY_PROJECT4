@@ -23,9 +23,7 @@ export default function Register() {
     console.log({
       nickName,
       email,
-      lastName,
       password,
-      confirmPassword,
       age,
       city,
       phoneNo,
@@ -37,9 +35,7 @@ export default function Register() {
       .post("http://localhost:5000/register", {
         nickName,
         email,
-        lastName,
         password,
-        confirmPassword,
         age,
         city,
         phoneNo,
