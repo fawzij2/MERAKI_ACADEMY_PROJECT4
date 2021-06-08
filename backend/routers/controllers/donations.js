@@ -4,7 +4,7 @@ const User = require("../../db/models/user")
 
 const getAllDonations = (req, res) => {
   Donation.find({})
-    .populate("caseId", "caseName")
+    .populate("caseId", "caseName  neededAmount  donatedAmount")
     .populate("donorId", "nickName")
     .exc()
     .then((result) => {
