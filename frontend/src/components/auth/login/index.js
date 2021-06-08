@@ -21,7 +21,7 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
-          // setToken(res.data.token);
+          //setToken(res.data.token);
           setLoginMessage("login successful");
           history.push(path);
         } else {
@@ -38,6 +38,9 @@ export default function Login({ setToken, path }) {
   return (
     <div>
       <p>Login</p>
+      <p>Login to your account</p>
+      <fieldset>
+        <legend>E-mail</legend>
       <input
         type="text"
         placeholder="email here"
@@ -45,6 +48,10 @@ export default function Login({ setToken, path }) {
           setEmail(e.target.value);
         }}
       />
+     </fieldset>
+
+     <fieldset>
+        <legend>Password</legend>
       <input
         type="password"
         placeholder="password here"
@@ -52,6 +59,7 @@ export default function Login({ setToken, path }) {
           setPassword(e.target.value);
         }}
       />
+       </fieldset>
       <button className="loginButton" onClick={loginFun}>
         login
       </button>
