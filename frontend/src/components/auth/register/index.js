@@ -97,6 +97,7 @@ export default function Register() {
         <fieldset>
           <legend>Password</legend>
           <input
+          
           className="input"
             type="password"
             placeholder="password here"

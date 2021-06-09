@@ -1,39 +1,35 @@
-.outRegister{
+.outRegister {
+  width: 100%;
+  padding: 1.5%;
 
-    padding: 80px;
-
-    background: #f9f9f9
-}
-
-.register{
-    display: grid;
-    justify-content: center; 
-    gap: 15px;
-
-    width: 700px;
-
-    max-width: 90%;
-    margin: auto;
-    background: #fff;
-    padding: 70px 50px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 5%)
+  background: #f9f9f9;
 
 }
 
+.register {
+  display: grid;
+  justify-content: center;
+  gap: 15px;
 
+  width: 45%;
 
-.input{
+  max-width: 90%;
 
-    width: 400px;
-    border: 0px;
-    border-color:#fff; ;
-    box-sizing: border-box;
-
-    
+  margin: auto;
+  background: #fff;
+  padding: 70px 50px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 5%);
 }
 
-.registerButton{
-  background-color:#18b760!important;
+.input {
+  width: 100%;
+  border: 0px;
+  outline: 0;
+  color: red;
+}
+
+.registerButton {
+  background-color: #18b760 !important;
   border-radius: 3px;
   color: white;
   font-weight: bolder;
@@ -41,9 +37,8 @@
   padding: 5px;
   cursor: pointer;
   border-color: #fff;
-
 }
 
-.message{
-   color: red; 
+.message {
+  color: red;
 }
