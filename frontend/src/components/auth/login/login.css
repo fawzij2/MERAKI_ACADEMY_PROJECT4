@@ -1,6 +1,8 @@
 
 .outLogin{
-    padding: 80px;
+    width: 100%;
+  padding: 1.5%;
+   
     background: #f9f9f9
 }
 
@@ -8,12 +10,14 @@
     display: grid;
     justify-content: center; 
     gap: 15px;
-    width: 500px;
+    width:45%;
+   
     max-width: 90%;
     margin: auto;
     background: #fff;
     padding: 70px 50px;
     box-shadow: 0 0 15px rgb(0 0 0 / 5%)
+   
 
 }
 
@@ -21,8 +25,13 @@
 
 .input{
     border: 0px;
+    outline:0;
+    width: 100%;
+
+   
+  }
     
-}
+
 
 .loginButton{
   background-color:#18b760!important;
