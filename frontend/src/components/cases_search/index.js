@@ -8,7 +8,7 @@ const CaseSearch = ({ setPath, id }) => {
   const history = useHistory();
   const location = useLocation();
   const [cases, setCases] = useState([]);
-  const [donation, setDonation] = useState(500);
+  const [donation, setDonation] = useState();
   const [sorting, setSorting] = useState("lowHigh");
   const [caseName, setCaseName] = useState("");
   useEffect(() => {
@@ -19,36 +19,26 @@ const CaseSearch = ({ setPath, id }) => {
         setCases(result.data);
       });
   }, []);
-  const searchDonations = () => {
-    if (donation == 500 || donation == 1000 || donation == 4999) {
+  useEffect(() => {
+    console.log(donation)
       axios
-        .get("/categeories/:category1", {
+        .post(`http://localhost:5000/cases/categeories/${categeory}`, {
           donationNeeded: Number(donation) ,
           sorting: sorting,
           caseName:caseName,
         })
         .then((result) => {
           setCases(result.data);
+          console.log(result.data)
         })
         .catch((err) => {
-          err.status(err.response.data.status);
-          console.log(err);
+         
+          console.log(err.response.data);
         });
-    } else {
-      axios
-        .get("/categeories/:category2", {
-          donationNeeded: Number(donation),
-          sorting: sorting,
-          caseName:caseName,
-        })
-        .then((result) => {
-          setCases(result.data);
-        })
-        .catch((err) => {
-          err.status(err.response.data.status);
-          console.log(err);
-        });
-    }
+    
+  }, [donation, sorting, caseName])
+  const searchDonations = () => {
+    
   };
   return (
     <>
@@ -56,7 +46,7 @@ const CaseSearch = ({ setPath, id }) => {
         <div className="searchBarSection">
           <div className="searchBarParts">
             Donations Needed
-            <select name="neededDonations" id="donations" onChange={(e)=>{
+            <select name="neededDonations" id="donations" onChange={ (e)=>{
               setDonation(e.target.value)
               searchDonations()
             }} >
@@ -68,8 +58,8 @@ const CaseSearch = ({ setPath, id }) => {
           </div>
           <div className="searchBarParts">
             Sort
-            <select name="sorting" id="sorting" onChange={(e)=>{
-              setSorting(e.target.value);
+            <select name="sorting" id="sorting" onChange={ (e)=>{
+              setSorting(e.target.value)
               searchDonations()
             }}>
               <option value="highLow">High to low</option>
@@ -77,7 +67,7 @@ const CaseSearch = ({ setPath, id }) => {
             </select>
           </div>
           <div className="searchBar">
-            <input className="searchBar" placeholder="Enter a case name" onChange={(e)=>{
+            <input className="searchBar" placeholder="Enter a case name" onChange={ (e)=>{
               setCaseName(e.target.value);
               searchDonations();
             }} />
