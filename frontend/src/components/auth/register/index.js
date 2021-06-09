@@ -60,11 +60,16 @@ export default function Register() {
 
   return (
     <div className="outRegister">
-      <div  className="Register">
-      <h2 style={{ textAlign: "center" }}>Register</h2>
-      <h4 style={{ textAlign: "center" }}>Register your account</h4>
 
-      <div>
+      <div  className="register">
+      <h2 style={{ textAlign: "center" }}>Register</h2>
+      <h5 style={{ textAlign: "center" }}>Register your account</h5>
+
+
+     
+
+     
+
         <fieldset>
           <legend>Nick Name</legend>
           <input
@@ -164,7 +169,7 @@ export default function Register() {
           REGISTER
         </button>
         <p className="message"  style={{ textAlign: "center" }}   >{registerMessage}</p>
-      </div>
+
     </div>
     </div>
   );
