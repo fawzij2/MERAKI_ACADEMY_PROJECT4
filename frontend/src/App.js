@@ -7,8 +7,9 @@ import Login from './components/auth/login/index';
 import Register from './components/auth/register/index';
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
-
-
+import About from './components/About/About'
+import Login from './components/auth/login/index'
+import Register from './components/auth/register/index'
 
 const App = () => {
   const [path, setPath] = useState("");
