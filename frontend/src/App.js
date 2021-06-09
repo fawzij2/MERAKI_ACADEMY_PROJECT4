@@ -9,6 +9,7 @@ import Register from './components/auth/register/index';
 import CaseSearch from "./components/cases_search";
 
 
+
 const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
@@ -23,6 +24,7 @@ const App = () => {
 		    <Route path="/cases/categeories/:categeory" render={()=><CaseSearch setPath={setPath} />} />
         <Route exact path = "/cases/:id" />
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
+
       </div>
     </>
   );
