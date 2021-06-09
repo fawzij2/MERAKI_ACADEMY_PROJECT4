@@ -8,7 +8,7 @@ const cardInfo = new mongoose.Schema({
     userId:{type:mongoose.Schema.ObjectId, ref:"User"}
 });
 
-CardInfo.pre("save",async function(){
+cardInfo.pre("save",async function(){
     this.cardNumber = await bcrypt.hash(this.cardNumber,10);
 })
 
