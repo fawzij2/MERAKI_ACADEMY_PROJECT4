@@ -22,7 +22,11 @@ export default function Login({ setToken, path }) {
         console.log(res);
         if (res.data.token) {
 
-          //setToken(res.data.token);
+
+
+          setToken(res.data.token);
+
+
 
 
 
