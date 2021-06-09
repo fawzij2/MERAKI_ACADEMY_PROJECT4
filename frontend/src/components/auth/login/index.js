@@ -21,11 +21,11 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
-<<<<<<< HEAD
-          //setToken(res.data.token);
-=======
 
->>>>>>> 2130974da03cb69b0c70f77c940c4732ffbe20bd
+          //setToken(res.data.token);
+
+
+
           setLoginMessage("login successful");
           history.push(path);
         } else {
@@ -40,32 +40,7 @@ export default function Login({ setToken, path }) {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-      <p>Login</p>
-      <p>Login to your account</p>
-      <fieldset>
-        <legend>E-mail</legend>
-      <input
-        type="text"
-        placeholder="email here"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-     </fieldset>
 
-     <fieldset>
-        <legend>Password</legend>
-      <input
-        type="password"
-        placeholder="password here"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-       </fieldset>
-=======
 
     <div className="outLogin" >
     <div className="login" >
@@ -96,7 +71,6 @@ export default function Login({ setToken, path }) {
       </fieldset>
 
   
->>>>>>> 2130974da03cb69b0c70f77c940c4732ffbe20bd
       <button className="loginButton" onClick={loginFun}>
         LOGIN
       </button>
