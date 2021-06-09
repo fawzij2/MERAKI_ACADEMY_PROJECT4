@@ -76,7 +76,9 @@ const CaseSearch = ({ setPath, id }) => {
         <div className="caseCards">
           {cases.map((elem, i) => {
             return (
-              <div key={i} className="caseCard">
+              <div key={i} className="caseCard" onClick={()=>{
+                history.push(`/cases/${elem._id}`)
+              }}>
                 <div className="casePic">
                   <img></img>
                 </div>
