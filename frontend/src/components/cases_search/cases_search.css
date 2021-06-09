@@ -5,11 +5,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 50px;
-    margin-top: 20px;
+    height: 75px;
+    padding-top: 20px;
+    background-color: #061738;
 }
 
 .searchBar{
+    color: white;
     position: relative;
     top: 7px;
     width: 250px;
@@ -22,4 +24,29 @@
 
 #donations{
     width: 110%;
+}
+
+.searchBarParts{
+    color: white;
+}
+
+.caseCards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.caseInfo{
+    gap: 15px;
+}
+
+.donations{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.caseName{
+    text-align: center;
 }
