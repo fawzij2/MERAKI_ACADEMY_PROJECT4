@@ -57,6 +57,7 @@ const ContactUs = () => {
             objections.
           </p>
           <table>
+            <tbody>
             <tr>
               <td>
                 <img className="icon" src={location} />
@@ -89,11 +90,13 @@ const ContactUs = () => {
                 <span className="tbody">BillTeam@gmail.com</span>
               </td>
             </tr>
+            </tbody>
           </table>
         </div>
         <div className="contact-form">
 		<h1>Contact Form:</h1>
           <table>
+            <tbody>
             <tr>
               <td>
                 <label>First Name:</label>
@@ -152,6 +155,7 @@ const ContactUs = () => {
             /></td>
 			<td><input className="btn" type="submit" value="Send" onClick={sendEmail} /></td>
 			</tr>
+      </tbody>
             </table>
             <div>{result ? <Result /> : null}</div>
         </div>
