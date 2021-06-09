@@ -9,7 +9,7 @@ import ClosedCases from "./components/closedCases/ClosedCases"
 import About from './components/About/About'
 import Login from './components/auth/login/index'
 import Register from './components/auth/register/index'
-
+import Update from './components/case/updateCase'
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -20,6 +20,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
+        <Route exact path="/update" component={Update}/>
 
 
 

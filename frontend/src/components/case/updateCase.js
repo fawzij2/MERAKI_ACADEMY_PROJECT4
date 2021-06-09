@@ -6,40 +6,58 @@ const Update=()=>{
 
 const [cases,setCases] = useState([]);
 
-useEffect(
-    ()=>{axios.get("http://localhost:5000/cases/").then((result)=>{
-        setCases(result);
+ useEffect(
+     getCases
+,[]);
+
+function getCases(){
+
+    axios.get("http://localhost:5000/cases/").then((result)=>{
+        
+        setCases(result.data)
     })
     .catch(err=>{
         console.log(err);
-    })}
-,[]);
+    })
+}
 
 console.warn(cases)
+
+const deleteCase=(id)=>{
+ axios.delete(`http://localhost:5000/cases/case/${id}`).then((result)=>{
+     console.log(result.data);
+     getCases()
+ })
+ .catch(err=>{
+     console.log(err.response.data);
+ })
+}
+
+const updateCase=(id)=>{
+
+}
 
 return (
     <div>
         <table border="1">
-            <thead>
-                <tr>
-                    <td>Case ID</td>
-                    <td>Case Name</td>
-                    <td>Case Category</td>
-                    <td>Case Privacy</td>
-                    <td>Case Amount</td>
+              <tbody>  
+                  <tr>
+                    <th>Case Name</th>
+                    <th>Case Category</th>
+                    <th>Case Privacy</th>
+                    <th>Case Amount</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            </thead>
-
-            <tbody>
-                
-            {    
+                {
             cases.map((item,index)=>{
-                <tr key={i}>
-                    <td>{item._Id}</td>
+               return  <tr key={index}>
                     <td>{item.caseName}</td>
                     <td>{item.category}</td>
                     <td>{item.isPrivate}</td>
                     <td>{item.neededAmount}</td>
+                    <td><button onClick={()=>deleteCase(item._id)}>Delete</button></td>
+                    <td><button onClick={()=>updateCase(item._id)}>Update</button></td>
                 </tr>    
             })
                 }
