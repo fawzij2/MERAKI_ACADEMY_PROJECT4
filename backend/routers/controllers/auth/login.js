@@ -23,6 +23,7 @@ const login = (req, res) => {
             res.send(err);
           }
           if (result === true) {
+
             res.status = 200;
             const payload = {
               userId: result1._id,
@@ -43,6 +44,7 @@ const login = (req, res) => {
       }
     })
     .catch((err) => {
+      
       res.status(500).json(err);
     });
 };
