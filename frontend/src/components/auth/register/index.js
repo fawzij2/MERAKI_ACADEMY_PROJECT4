@@ -30,102 +30,142 @@ export default function Register() {
       IBAN,
     });
 
-    if (password===confirmPassword) {
+    if (password === confirmPassword) {
       axios
-      .post("http://localhost:5000/register", {
-        nickName,
-        email,
-        password,
-        age,
-        city,
-        phoneNo,
-        IBAN,
-      })
-      .then((res) => {
-
-        if (res.data.errors) {
-          setRegisterMessage(
-            "some thing happened while register, please try again"
-          );
-        } else {
-          history.push("/login");
-        }
-      })
-      .catch((err) => {
-        throw err;
-      });
+        .post("http://localhost:5000/register", {
+          nickName,
+          email,
+          password,
+          age,
+          city,
+          phoneNo,
+          IBAN,
+        })
+        .then((res) => {
+          if (res.data.errors) {
+            setRegisterMessage(
+              "some thing happened while register, please try again"
+            );
+          } else {
+            history.push("/login");
+          }
+        })
+        .catch((err) => {
+          throw err;
+        });
+    } else {
+      setRegisterMessage("please check the password");
     }
-    else{setRegisterMessage("please check the password")}
-   
   };
 
   return (
-    <div>
-      <p>Register : </p>
+    <div className="outRegister">
+      <div  className="Register">
+      <h2 style={{ textAlign: "center" }}>Register</h2>
+      <h4 style={{ textAlign: "center" }}>Register your account</h4>
+
       <div>
-        <input
-          type="text"
-          placeholder="nick name here"
-          onChange={(e) => {
-            setNickName(e.target.value);
-          }}
-        />
+        <fieldset>
+          <legend>Nick Name</legend>
+          <input
+          className="input"
+            type="text"
+            placeholder="nick name here"
+            onChange={(e) => {
+              setNickName(e.target.value);
+            }}
+          />
+        </fieldset>
 
-        <input
-          type="text"
-          placeholder="email here"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="password here"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="Confirm password here"
-          onChange={(e) => {
-            setConfirmPassword(e.target.value);
-          }}
-        />
+        <fieldset>
+          <legend>E-Mail</legend>
+          <input
+          className="input"
+            type="text"
+            placeholder="email here"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </fieldset>
 
-        <input
-          type="number"
-          placeholder="age here"
-          onChange={(e) => {
-            setAge(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="city here"
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="phone number here"
-          onChange={(e) => {
-            setPhoneNo(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="IBAN here"
-          onChange={(e) => {
-            setIBAN(e.target.value);
-          }}
-        />
-        <button className="button" onClick={postRegister}>
-          Register
+        <fieldset>
+          <legend>Password</legend>
+          <input
+          className="input"
+            type="password"
+            placeholder="password here"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Confirm Password</legend>
+          <input
+          className="input"
+            type="password"
+            placeholder="Confirm password here"
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Age</legend>
+          <input
+          className="input"
+            type="number"
+            placeholder="age here"
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>City</legend>
+          <input
+          className="input"
+            type="text"
+            placeholder="city here"
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Phone Number</legend>
+          <input
+          className="input"
+            type="text"
+            placeholder="phone number here"
+            onChange={(e) => {
+              setPhoneNo(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>IBAN</legend>
+          <input
+          className="input"
+            type="text"
+            placeholder="IBAN here"
+            onChange={(e) => {
+              setIBAN(e.target.value);
+            }}
+          />
+        </fieldset>
+        <button className="registerButton" onClick={postRegister}>
+          REGISTER
         </button>
-        <p>{registerMessage}</p>
+        <p className="message"  style={{ textAlign: "center" }}   >{registerMessage}</p>
       </div>
+    </div>
     </div>
   );
 }
