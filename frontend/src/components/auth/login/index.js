@@ -21,12 +21,15 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
+<<<<<<< HEAD
 
           //setToken(res.data.token);
 
 
 
 
+=======
+>>>>>>> e26ff0f34c04fb56ae8f3e072759b9d943beae0e
           setLoginMessage("login successful");
           history.push(path);
         } else {
