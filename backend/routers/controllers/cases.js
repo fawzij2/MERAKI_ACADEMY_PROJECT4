@@ -94,6 +94,30 @@ const getCasesByCategory = (req, res) => {
     });
 };
 
+const getCasesByCategoryByDonationNeeded = (req, res) => {
+  const category = req.params.category1;
+  const DonationNeeded = req.body.donationNeeded;
+  Case.find({ category: category, neededAmount:{$lte: DonationNeeded} })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+};
+
+const getCasesByCategoryByDonationNeeded2 = (req, res) => {
+  const category = req.params.category2;
+  const DonationNeeded = req.body.donationNeeded;
+  Case.find({ category: category, neededAmount:{$gte: DonationNeeded} })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+};
+
 module.exports = {
   createNewCase,
   getAllCases,
@@ -102,4 +126,6 @@ module.exports = {
   getCaseById,
   deleteCaseById,
   getCasesByCategory,
+  getCasesByCategoryByDonationNeeded2,
+  getCasesByCategoryByDonationNeeded
 };

@@ -34,9 +34,9 @@ export default function AddNewCase() {
         setMessage("add successfully");
       })
       .catch((err) => {
-      if (res.status===400) {
-        setMessage("error");  
-      }  
+      // if (res.status===400) {
+      //   setMessage("error");  
+      // }  
         throw err;
       });
   };
