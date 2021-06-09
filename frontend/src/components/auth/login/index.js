@@ -23,7 +23,9 @@ export default function Login({ setToken, path }) {
         if (res.data.token) {
 
 
+
           setToken(res.data.token);
+
 
 
 
