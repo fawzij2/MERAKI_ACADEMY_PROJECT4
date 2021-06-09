@@ -96,26 +96,50 @@ const getCasesByCategory = (req, res) => {
 
 const getCasesByCategoryByDonationNeeded = (req, res) => {
   const category = req.params.category1;
-  const DonationNeeded = req.body.donationNeeded;
-  Case.find({ category: category, neededAmount:{$lte: DonationNeeded} })
+  const donationNeeded = req.body.donationNeeded;
+  const caseSorting = req.body.sorting;
+  const caseName = req.body.caseName;
+  if (caseSorting === "lowHigh"){
+  Case.find({ category: category, neededAmount:{$lte: donationNeeded},caseName:{ "$regex": caseName, "$options": "i" } }).sort({neededAmount:1})
     .then((result) => {
       res.status(200).json(result);
     })
     .catch((err) => {
       res.status(404).json(err);
     });
+  } else if(caseSorting === "highLow"){
+    Case.find({ category: category, neededAmount:{$lte: donationNeeded},caseName:{ "$regex": caseName, "$options": "i" } }).sort({neededAmount:-1})
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+  }
 };
 
 const getCasesByCategoryByDonationNeeded2 = (req, res) => {
   const category = req.params.category2;
   const DonationNeeded = req.body.donationNeeded;
-  Case.find({ category: category, neededAmount:{$gte: DonationNeeded} })
+  const caseSorting = req.body.sorting;
+  const caseName = req.body.caseName;
+  if (caseSorting === "lowHigh"){
+  Case.find({ category: category, neededAmount:{$gte: DonationNeeded},caseName:{ "$regex": caseName, "$options": "i" } }).sort({neededAmount:1})
     .then((result) => {
       res.status(200).json(result);
     })
     .catch((err) => {
       res.status(404).json(err);
     });
+  } else if(caseSorting === "highLow"){
+    Case.find({ category: category, neededAmount:{$gte: DonationNeeded}, caseName:{ "$regex": caseName, "$options": "i" } }).sort({neededAmount:-1})
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json(err);
+    });
+  }
 };
 
 module.exports = {
