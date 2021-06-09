@@ -33,32 +33,32 @@ const Home = () => {
         <div className="introduction">
           <p className="introText">We support a myriad of causes. Choose any of the categories to see them</p>
           <div className="categoryBox3" onClick={(e)=>{
-            history.push("/cases/categeories/general")
+            history.push("/cases/categeories/General")
           }}>
             <p className="text">Other categories</p>
           </div>
         </div>
         <div className="mainCategories">
           <div className="categoryBox1" onClick={(e)=>{
-            history.push(`/cases/categeories/educational`)
+            history.push(`/cases/categeories/Educational`)
           }}>
             <img src={educational} className="categoriesPics"></img>
             <p className="text">educational</p>
           </div>
           <div className="categoryBox2" onClick={(e)=>{
-            history.push(`/cases/categeories/health`)
+            history.push(`/cases/categeories/Health`)
           }}>
             <img src={medical} className="categoriesPics"></img>
             <p className="text">health</p>
           </div>
           <div className="categoryBox2" onClick={(e)=>{
-            history.push(`/cases/categeories/debts`)
+            history.push(`/cases/categeories/Debts`)
           }}>
             <img src={debt} className="categoriesPics" ></img>
             <p className="text">debts</p>
           </div>
           <div className="categoryBox1" onClick={(e)=>{
-            history.push(`/cases/categeories/building`)
+            history.push(`/cases/categeories/Building`)
           }}>
             <img src={building} className="categoriesPics"></img>
             <p className="text">rebuilding</p>
