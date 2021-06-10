@@ -1,7 +1,15 @@
 const Case = require("./../../db/models/case");
 
 const createNewCase = (req, res) => {
-  const { caseName, category, neededAmount, address, isPrivate, isClosed,userId } = req.body;
+  const {
+    caseName,
+    category,
+    neededAmount,
+    address,
+    isPrivate,
+    isClosed,
+    userId,
+  } = req.body;
 
   const newCase = new Case({
     caseName,
@@ -10,7 +18,7 @@ const createNewCase = (req, res) => {
     address,
     isPrivate,
     isClosed,
-    userId
+    userId,
   });
 
   newCase
@@ -46,9 +54,9 @@ const getClosedCases = (req, res) => {
 
 const updateCaseById = (req, res) => {
   const id = req.params.id;
-  const updates= req.body;
+  const updates = req.body;
 
-  Case.findOneAndUpdate({_id:id},updates, {new: true} )
+  Case.findOneAndUpdate({ _id: id }, updates, { new: true })
     .then((result) => {
       res.status(200).json(result);
     })
@@ -85,37 +93,108 @@ const deleteCaseById = (req, res) => {
 
 const getCasesByCategory = (req, res) => {
   const category = req.params.category;
-  Case.find({ category: category })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(404).json(err);
-    });
-};
-
-const getCasesByCategoryByDonationNeeded = (req, res) => {
-  const category = req.params.category1;
-  const DonationNeeded = req.body.donationNeeded;
-  Case.find({ category: category, neededAmount:{$lte: DonationNeeded} })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(404).json(err);
-    });
-};
-
-const getCasesByCategoryByDonationNeeded2 = (req, res) => {
-  const category = req.params.category2;
-  const DonationNeeded = req.body.donationNeeded;
-  Case.find({ category: category, neededAmount:{$gte: DonationNeeded} })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(404).json(err);
-    });
+  console.log(req.body.sorting)
+  if (req.body.sorting) {
+    const donationNeeded = req.body.donationNeeded;
+    console.log(donationNeeded)
+    const caseSorting = req.body.sorting;
+    console.log(caseSorting)
+    const caseName = req.body.caseName;
+    console.log(caseName)
+    if (donationNeeded) {
+      if (donationNeeded < 5000) {
+        if (caseSorting === "lowHigh") {
+          Case.find({ $and:[
+            {category: category},
+            {neededAmount: { $lte: donationNeeded }},
+            {caseName: { $regex: caseName, $options: "i" }},]
+          })
+            .sort({ neededAmount: 1 })
+            .then((result) => {
+              res.status(200).json(result);
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        } else if (caseSorting === "highLow") {
+          Case.find({ $and:[
+            {category: category},
+            {neededAmount: { $lte: donationNeeded }},
+            {caseName: { $regex: caseName, $options: "i" }},]
+          })
+            .sort({ neededAmount: -1 })
+            .then((result) => {
+              res.status(200).json(result);
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        }
+      } else {
+        if (caseSorting === "lowHigh") {
+          Case.find({ $and:[
+            {category: category},
+            {neededAmount: { $gte: donationNeeded }},
+            {caseName: { $regex: caseName, $options: "i" }},]
+          })
+            .sort({ neededAmount: 1 })
+            .then((result) => {
+              res.status(200).json(result);
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        } else if (caseSorting === "highLow") {
+          Case.find({ $and:[
+            {category: category},
+            {neededAmount: { $gte: DonationNeeded }},
+            {caseName: { $regex: caseName, $options: "i" }},]
+          })
+            .sort({ neededAmount: -1 })
+            .then((result) => {
+              res.status(200).json(result);
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        }
+      }
+    } else {
+      if (caseSorting === "lowHigh") {
+        Case.find({ $and:[
+          {category: category},
+          {caseName: { $regex: caseName, $options: "i" }},]
+        })
+          .sort({ neededAmount: 1 })
+          .then((result) => {
+            res.status(200).json(result);
+          })
+          .catch((err) => {
+            res.status(404).json(err);
+          });
+      } else if (caseSorting === "highLow") {
+        Case.find({ $and:[
+          {category: category},
+          {caseName: { $regex: caseName, $options: "i" }},]
+        })
+          .sort({ neededAmount: -1 })
+          .then((result) => {
+            res.status(200).json(result);
+          })
+          .catch((err) => {
+            res.status(404).json(err);
+          });
+      }
+    }
+  } else {
+    Case.find({ category: category })
+      .then((result) => {
+        res.status(200).json(result);
+      })
+      .catch((err) => {
+        res.status(404).json(err);
+      });
+  }
 };
 
 module.exports = {
@@ -126,6 +205,4 @@ module.exports = {
   getCaseById,
   deleteCaseById,
   getCasesByCategory,
-  getCasesByCategoryByDonationNeeded2,
-  getCasesByCategoryByDonationNeeded
 };
