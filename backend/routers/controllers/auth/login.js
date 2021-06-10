@@ -35,7 +35,7 @@ const login = (req, res) => {
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
 
-            res.json({ token: token });
+            res.json({ token: token ,result: result1 });
           } else {
             res.status = 403;
             res.json("The password you’ve entered is incorrect");
