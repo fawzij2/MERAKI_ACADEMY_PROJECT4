@@ -3,7 +3,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 import "./home.css";
 import Volunteers from "../volunteers/index"
 import About from "./../About/About";
-import photo1 from "./photo1.jpg";
+import photo1 from "./photo4.jpg";
 import photo2 from "./photo2.jpg";
 import photo3 from "./photo3.jpg";
 import medical from "./medical.png";
@@ -13,16 +13,17 @@ import building from "./building.png";
 import general from "./general.png";
 import ContactUs from "../contactUs/index"
 import { useHistory,Link } from "react-router-dom";
+import Footer from '../footer/index'
 
 const Home = () => {
-  const images = [{ url: photo1 }, { url: photo2 }, { url: photo3 }];
+  const images = [{ url: photo2 }, { url: photo3 }, { url: photo1 }];
   const history = useHistory()
 
   return (
     <div>
       <SimpleImageSlider
-        width={1500}
-        height={850}
+        width={1349}
+        height={550}
         images={images}
         showBullets={true}
         slideDuration={0.5}
@@ -65,13 +66,14 @@ const Home = () => {
           </div>
         </div>
         </div>
-        {/* <Contact /> */}
-        <div className="contact sections"><ContactUs/></div>
         <Volunteers />
         {/* <div className="colunteers sections">our volunteers</div> */}
         <div className="achievements sections">this is what we do</div>
-        <div className="copyrights sections">copyrights go here</div>
-        <div><Link to="/update">Update</Link></div>
+        {/* <Contact /> */}
+        <div className="contact-section"><ContactUs/></div>
+        {/* <div className="copyrights-section">copyrights go here</div> */}
+        <Footer/>
+        <div><Link to="/update">my cases</Link></div>
     </div>
     )
 };

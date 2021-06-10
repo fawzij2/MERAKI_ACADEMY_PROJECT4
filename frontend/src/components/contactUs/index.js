@@ -53,7 +53,7 @@ const ContactUs = () => {
           <h1>Contact Details:</h1>
           <p>
             Here you can find all the needed information for <br/>you to contact with
-            us , be comfortable to notify us with your suggestions and
+            us , be comfortable to notify us<br/> with your suggestions and
             objections.
           </p>
           <table>
