@@ -23,7 +23,6 @@ const login = (req, res) => {
             res.send(err);
           }
           if (result === true) {
-
             res.status = 200;
             const payload = {
               userId: result1._id,
@@ -35,7 +34,7 @@ const login = (req, res) => {
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
 
-            res.json({ token: token });
+            res.json({ token: token ,result: result1 });
           } else {
             res.status = 403;
             res.json("The password you’ve entered is incorrect");
@@ -44,7 +43,6 @@ const login = (req, res) => {
       }
     })
     .catch((err) => {
-      
       res.status(500).json(err);
     });
 };
