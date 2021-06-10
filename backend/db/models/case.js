@@ -6,7 +6,7 @@ const caseSchema = new mongoose.Schema({
   category: { type: String, required: true },
   neededAmount: { type: Number, required: true },
   address: { type: String },
-  isPrivate: { type: Boolean },
+  isPrivate: { type: String },
   isClosed: { type: Boolean },
   donatedAmount: { type: Number },
   priority: { type: Number },

@@ -47,8 +47,8 @@ const App = () => {
         />
         <Route exact path="/cases/:id" />
         <Route exact path="/update" render={() => <Update token={token} />} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/cases/create"  component={AddNewCase} />
+        <Route exact path="/profile" render={() => <Profile nickName={nickName} />} />
+        <Route exact path="/cases/create"  render={() => <AddNewCase token={token}/>}  />
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AddNewCase.css";
 import axios from "axios";
 
-export default function AddNewCase() {
+export default function AddNewCase({ token }) {
   const [caseName, setCaseName] = useState("");
   const [category, setCategory] = useState("");
   const [neededAmount, setNeededAmount] = useState(0);
@@ -21,80 +21,114 @@ export default function AddNewCase() {
   //register2
 
   const AddCase = () => {
+    console.log(caseName, category, neededAmount, address, isPrivate, token);
     axios
-      .post("http://localhost:5000/cases/create", {
-        caseName,
-        category,
-        neededAmount,
-        address,
-        isPrivate,
-      })
+      .post(
+        "http://localhost:5000/cases/create",
+        {
+          caseName,
+          category,
+          neededAmount,
+          address,
+          isPrivate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         setMessage("add successfully");
       })
       .catch((err) => {
-      // if (res.status===400) {
-      //   setMessage("error");  
-      // }  
+        // if (res.status===400) {
+        //   setMessage("error");
+        // }
+        console.log(err);
         throw err;
       });
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="case name here"
-        onChange={(e) => {
-          setCaseName(e.target.value);
-        }}
-      />
+    <div className="outAdd">
+      <div className="Add">
+        <h3 style={{ color: "#18b760" }}>Add new case</h3>
 
-      <label>Choose kind of help :</label>
-      <select>
-        {branchh.map((element, index) => (
-          <option
-            key={index}
-            onSelect={() => {
-              setCategory(element);
-              console.log({ element });
+        <fieldset>
+          <legend> Case Name</legend>
+          <input
+            className="input"
+            type="text"
+            placeholder="case name here"
+            onChange={(e) => {
+              setCaseName(e.target.value);
+              console.log(caseName);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+          <legend> Choose kind of help </legend>
+
+          <select
+            className="option"
+            onChange={(e) => {
+              setCategory(e.target.value);
             }}
           >
-            {element}
-          </option>
-        ))}
-      </select>
-      <input
-        type="number"
-        placeholder="needed amount"
-        onChange={(e) => {
-          setNeededAmount(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        placeholder="address here"
-        onChange={(e) => {
-          setAddress(e.target.value);
-        }}
-      />
-      <label>are you want keep your information secret?</label>
-      <select>
-        {yesNo.map((element, index) => (
-          <option
-            key={index}
-            onSelect={() => {
-              setIsPrivate(element);
-              console.log({ element });
+            {branchh.map((element, index) => (
+              <option value={element} key={index}>
+                {element}
+              </option>
+            ))}
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend> Needed amount</legend>
+          <input
+            className="input"
+            type="number"
+            placeholder="needed amount"
+            onChange={(e) => {
+              setNeededAmount(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend> Address</legend>
+          <input
+            className="input"
+            type="text"
+            placeholder="address here"
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend> Secret information</legend>
+          <select
+            className="option"
+            onChange={(e) => {
+              setIsPrivate(e.target.value);
             }}
           >
-            {element}
-          </option>
-        ))}
-      </select>
-      <button onClick={AddCase}>Add</button>
-      <p>message</p>
+            {yesNo.map((element, index) => (
+              <option value={element} key={index}>
+                {element}
+              </option>
+            ))}
+          </select>
+        </fieldset>
+        <button className="profileButton" onClick={AddCase}>
+          Add
+        </button>
+        <p>{message}</p>
+      </div>
     </div>
   );
 }
