@@ -20,8 +20,9 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
-        
+
           setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
 
           setLoginMessage("login successful");
           history.push(path);
