@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AddNewCase";
+import "./AddNewCase.css";
 import axios from "axios";
 
 export default function AddNewCase() {
