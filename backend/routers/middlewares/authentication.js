@@ -1,15 +1,16 @@
-
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const secret = process.env.SECRET;
 
 const authentication = (req, res, next) => {
-  console.log("req.headers.authorization"+req.headers.authorization);
-  if (!req.headers.authorization) {
+  console.log("req.headers.authorization " + req.header("Authorization"));
+  console.log("=================");
+  console.log(req.header("Authorization"));
+  if (!req.header("Authorization")) {
     res.status(403).json({ message: "forbidden" });
   }
-  const token = req.headers.authorization.split(" ")[1];
+  const token = req.header("Authorization").split(" ")[1];
   console.log(token);
   jwt.verify(token, secret, (err, result) => {
     if (err) {
@@ -23,4 +24,3 @@ const authentication = (req, res, next) => {
 };
 
 module.exports = authentication;
-
