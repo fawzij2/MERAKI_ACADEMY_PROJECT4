@@ -22,6 +22,9 @@ const Navigation = () => {
           <Link to="/cases/closed" className="dropDownLinks">
             closed cases
           </Link>
+          <Link to="/isClose" className="dropDownLinks">
+          is Close
+          </Link>
         </div>
       </div>
       <Link to="/about" className="links">

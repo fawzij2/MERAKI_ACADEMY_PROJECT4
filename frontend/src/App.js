@@ -8,6 +8,7 @@ import Register from './components/auth/register/index';
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
 import Update from './components/case/updateCase'
+import IsClose from './components/IsClose'
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -19,6 +20,7 @@ const App = () => {
         <Route exact path="/" render={()=><Home setPath={setPath}/>} />
         <Route exact path="/login" render={()=><Login path={path} setToken={setToken} />} />
         <Route exact path="/register" component={Register}/>
+        <Route exact path="/isClose" render={()=><IsClose token={token} />}/>
 		    <Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath} />}/>
 		    <Route path="/cases/categeories/:categeory" render={()=><CaseSearch setPath={setPath} />} />
         <Route exact path = "/cases/:id" />
