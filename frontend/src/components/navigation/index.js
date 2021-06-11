@@ -40,7 +40,8 @@ const Navigation = ({ token }) => {
         </Link>
         <Link to="/logout" className="links logreg" >
         Logout
-      </Link></div>
+      </Link>
+      <Link to="/update" className="links logreg">my cases</Link></div>
       ) : (
         <div className="signing">
           <Link to="/login" className="links logreg">
