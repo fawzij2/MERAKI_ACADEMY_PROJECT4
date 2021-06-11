@@ -8,30 +8,32 @@ import Register from "./components/auth/register/index";
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
 import Update from "./components/case/updateCase";
-import Header from './components/Header/header'
+import Header from "./components/Header/header";
 
-import CreditCardAdd from "./components/add_creditcard/index"
+import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";
-import Profile from "./components/Profile/index"
+import Profile from "./components/Profile/index";
+import Logout from "./components/Logout/logout";
 
 const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
-  const [nickName, setNickName] = useState("")
+  const [nickName, setNickName] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("nickName")) setNickName(localStorage.getItem("nickName"));
+    if (localStorage.getItem("nickName"))
+      setNickName(localStorage.getItem("nickName"));
   }, []);
 
   console.log("INSIDE APP: ", token);
   return (
     <>
       <div className="App">
-        <Header/>
+        <Header />
         <Navigation token={token} />
         <Route exact path="/" render={() => <Home setPath={setPath} />} />
         <Route
@@ -51,10 +53,27 @@ const App = () => {
         />
         <Route exact path="/cases/:id" />
         <Route exact path="/update" render={() => <Update token={token} />} />
-        <Route exact path="/profile" render={() => <Profile nickName={nickName} />} />
-        <Route exact path="/cases/create"  render={() => <AddNewCase token={token}/>}  />
+        <Route
+          exact
+          path="/profile"
+          render={() => <Profile nickName={nickName} />}
+        />
+        <Route
+          exact
+          path="/cases/create"
+          render={() => <AddNewCase token={token} />}
+        />
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
-        <Route exact path="/cases/:id/donate" render={()=><CreditCardAdd token={token}/>} />
+        <Route
+          exact
+          path="/cases/:id/donate"
+          render={() => <CreditCardAdd token={token} />}
+        />
+        <Route
+          exact
+          path="/logout"
+          render={() => <Logout />}
+        />
       </div>
     </>
   );

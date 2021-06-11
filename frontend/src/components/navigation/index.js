@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import "./navigation.css";
 
 const Navigation = ({ token }) => {
+  
   return (
     <div className="navBar">
       <div className="others">
@@ -34,9 +35,12 @@ const Navigation = ({ token }) => {
         </Link>
       </div>
       {token ? (
-        <Link to="/profile" className="links logreg">
+        <div className="signing"><Link to="/profile" className="links logreg">
           Profile
         </Link>
+        <Link to="/logout" className="links logreg" >
+        Logout
+      </Link></div>
       ) : (
         <div className="signing">
           <Link to="/login" className="links logreg">
