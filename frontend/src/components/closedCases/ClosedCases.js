@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 export default function ClosedCases({ setPath }) {
+  setPath("/cases/closed")
   const [result, setResult] = useState([]);
   useEffect(() => {
     axios

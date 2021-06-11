@@ -4,6 +4,7 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const CaseSearch = ({ setPath, id }) => {
+  setPath("/cases/categeories/:categeory")
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -12,7 +13,8 @@ const CaseSearch = ({ setPath, id }) => {
   const [sorting, setSorting] = useState("lowHigh");
   const [caseName, setCaseName] = useState("");
   useEffect(() => {
-    setPath(location.pathname);
+    // setPath(location.pathname);
+    
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {

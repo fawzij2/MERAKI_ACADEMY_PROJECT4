@@ -14,9 +14,10 @@ import ContactUs from "../contactUs/index";
 import { useHistory, Link } from "react-router-dom";
 import Footer from "../footer/index";
 
-const Home = () => {
+const Home = ({setPath}) => {
   const images = [{ url: photo2 }, { url: photo3 }, { url: photo1 }];
   const history = useHistory();
+  setPath("/")
 
   return (
     <div>
