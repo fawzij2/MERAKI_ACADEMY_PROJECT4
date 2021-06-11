@@ -3,7 +3,9 @@ import "./cases_search.css";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
+
 const CaseSearch = ({ setPath }) => {
+  setPath("/cases/categeories/:categeory")
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -25,7 +27,8 @@ const CaseSearch = ({ setPath }) => {
     }
   };
   useEffect(() => {
-    setPath(location.pathname);
+    // setPath(location.pathname);
+    
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {

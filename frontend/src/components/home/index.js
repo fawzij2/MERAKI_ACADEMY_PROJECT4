@@ -16,8 +16,10 @@ import Footer from "../footer/index";
 import {scroller} from "react-scroll";
 
 const Home = ({setPath, homePageSection}) => {
+
   const images = [{ url: photo2 }, { url: photo3 }, { url: photo1 }];
   const history = useHistory();
+  setPath("/")
 
   useEffect(() => {
     if (homePageSection !== ""){
