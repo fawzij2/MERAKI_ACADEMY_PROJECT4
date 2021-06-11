@@ -13,6 +13,7 @@ import Header from "./components/Header/header";
 import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";
 import Profile from "./components/Profile/index";
+import DonationConfirm from "./components/donation_confirmed/index"
 import Logout from "./components/Logout/logout";
 
 const App = () => {
@@ -64,6 +65,8 @@ const App = () => {
           render={() => <AddNewCase token={token} />}
         />
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
+        <Route exact path="/cases/:id/donate" render={()=><CreditCardAdd token={token}/>} />
+        <Route exact path="/donation_confirmed" component={DonationConfirm}/>
         <Route
           exact
           path="/cases/:id/donate"
