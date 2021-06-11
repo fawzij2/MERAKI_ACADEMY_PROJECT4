@@ -2,7 +2,7 @@ import react from "react";
 import poor from "./poor.jpg";
 import man from "./help.png";
 import house from "./house.png";
-import './About.css';
+import "./About.css";
 
 const About = () => {
   return (
@@ -24,10 +24,14 @@ const About = () => {
             who need it. It is done without expecting something in return.
           </p>
           <div className="services">
-            <div><img src={house} className="icons"></img>{" "}
-            <span className="iconCaption">Fix Building.</span></div>
-            <div><img src={man} className="icons"></img>{" "}
-            <span className="iconCaption">Help poor.</span></div>
+            <div>
+              <img src={house} className="icons"></img>{" "}
+              <span className="iconCaption">Fix Building.</span>
+            </div>
+            <div>
+              <img src={man} className="icons"></img>{" "}
+              <span className="iconCaption">Help poor.</span>
+            </div>
           </div>
         </div>
       </div>
