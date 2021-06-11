@@ -95,22 +95,28 @@ const deleteCaseById = (req, res) => {
 
 const getCasesByCategory = (req, res) => {
   const category = req.params.category;
-  console.log(req.body.sorting)
+  const skip = req.body.skip;
+  const limit = req.body.limit;
+  console.log(req.body.sorting);
   if (req.body.sorting) {
     const donationNeeded = req.body.donationNeeded;
-    console.log(donationNeeded)
+    console.log(donationNeeded);
     const caseSorting = req.body.sorting;
-    console.log(caseSorting)
+    console.log(caseSorting);
     const caseName = req.body.caseName;
-    console.log(caseName)
+    console.log(caseName);
     if (donationNeeded) {
       if (donationNeeded < 5000) {
         if (caseSorting === "lowHigh") {
-          Case.find({ $and:[
-            {category: category},
-            {neededAmount: { $lte: donationNeeded }},
-            {caseName: { $regex: caseName, $options: "i" }},]
+          Case.find({
+            $and: [
+              { category: category },
+              { neededAmount: { $lte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+            ],
           })
+            .skip(skip)
+            .limit(limit)
             .sort({ neededAmount: 1 })
             .then((result) => {
               res.status(200).json(result);
@@ -119,11 +125,15 @@ const getCasesByCategory = (req, res) => {
               res.status(404).json(err);
             });
         } else if (caseSorting === "highLow") {
-          Case.find({ $and:[
-            {category: category},
-            {neededAmount: { $lte: donationNeeded }},
-            {caseName: { $regex: caseName, $options: "i" }},]
+          Case.find({
+            $and: [
+              { category: category },
+              { neededAmount: { $lte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+            ],
           })
+            .skip(skip)
+            .limit(limit)
             .sort({ neededAmount: -1 })
             .then((result) => {
               res.status(200).json(result);
@@ -134,11 +144,15 @@ const getCasesByCategory = (req, res) => {
         }
       } else {
         if (caseSorting === "lowHigh") {
-          Case.find({ $and:[
-            {category: category},
-            {neededAmount: { $gte: donationNeeded }},
-            {caseName: { $regex: caseName, $options: "i" }},]
+          Case.find({
+            $and: [
+              { category: category },
+              { neededAmount: { $gte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+            ],
           })
+            .skip(skip)
+            .limit(limit)
             .sort({ neededAmount: 1 })
             .then((result) => {
               res.status(200).json(result);
@@ -147,11 +161,15 @@ const getCasesByCategory = (req, res) => {
               res.status(404).json(err);
             });
         } else if (caseSorting === "highLow") {
-          Case.find({ $and:[
-            {category: category},
-            {neededAmount: { $gte: DonationNeeded }},
-            {caseName: { $regex: caseName, $options: "i" }},]
+          Case.find({
+            $and: [
+              { category: category },
+              { neededAmount: { $gte: DonationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+            ],
           })
+            .skip(skip)
+            .limit(limit)
             .sort({ neededAmount: -1 })
             .then((result) => {
               res.status(200).json(result);
@@ -163,10 +181,14 @@ const getCasesByCategory = (req, res) => {
       }
     } else {
       if (caseSorting === "lowHigh") {
-        Case.find({ $and:[
-          {category: category},
-          {caseName: { $regex: caseName, $options: "i" }},]
+        Case.find({
+          $and: [
+            { category: category },
+            { caseName: { $regex: caseName, $options: "i" } },
+          ],
         })
+          .skip(skip)
+          .limit(limit)
           .sort({ neededAmount: 1 })
           .then((result) => {
             res.status(200).json(result);
@@ -175,10 +197,14 @@ const getCasesByCategory = (req, res) => {
             res.status(404).json(err);
           });
       } else if (caseSorting === "highLow") {
-        Case.find({ $and:[
-          {category: category},
-          {caseName: { $regex: caseName, $options: "i" }},]
+        Case.find({
+          $and: [
+            { category: category },
+            { caseName: { $regex: caseName, $options: "i" } },
+          ],
         })
+          .skip(skip)
+          .limit(limit)
           .sort({ neededAmount: -1 })
           .then((result) => {
             res.status(200).json(result);
@@ -190,6 +216,8 @@ const getCasesByCategory = (req, res) => {
     }
   } else {
     Case.find({ category: category })
+      .skip(skip)
+      .limit(limit)
       .then((result) => {
         res.status(200).json(result);
       })

@@ -2,8 +2,8 @@ import React from "react";
 import { Link,useHistory } from "react-router-dom";
 import "./navigation.css";
 
-const Navigation = ({ token }) => {
-  
+const Navigation = ({ token ,setToken}) => {
+  const history = useHistory();
   return (
     <div className="navBar">
       <div className="others">
@@ -38,7 +38,8 @@ const Navigation = ({ token }) => {
         <div className="signing"><Link to="/profile" className="links logreg">
           Profile
         </Link>
-        <Link to="/logout" className="links logreg" >
+        <Link to ='/' className="links logreg" onClick={()=>{ localStorage.clear();setToken(null)}
+    } >
         Logout
       </Link>
       <Link to="/update" className="links logreg">my cases</Link></div>

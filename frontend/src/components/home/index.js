@@ -40,9 +40,9 @@ const Home = ({setPath}) => {
             <br /> Or you can choose other categories{" "}
             <Link
               className="Link"
-              onClick={(e) => {
-                history.push("/cases/categeories/General");
-              }}
+             
+                to ="/cases/categeories/General"
+             
             >
               Here.
             </Link>

@@ -2,9 +2,9 @@ import react from 'react'
 import {useHistory} from 'react-router-dom'
 
 const Logout =()=>{
-    const History = useHistory();
+    const history = useHistory();
     localStorage.clear()
-    History.push('/login')
+    history.push('/login')
 }
 
 export default Logout;
