@@ -1,52 +1,52 @@
-.caseSearch{
-    width: 100%;
+.caseSearch {
+  width: 100%;
 }
-.searchBarSection{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 75px;
-    padding-top: 20px;
-    background-color: #061738;
-}
-
-.searchBar{
-    color: white;
-    position: relative;
-    top: 7px;
-    width: 250px;
-    height: 75%;
+.searchBarSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 75px;
+  padding-top: 20px;
+  background-color: #061738;
 }
 
-#sorting{
-    width: 110%;
+.searchBar {
+  color: white;
+  position: relative;
+  top: 7px;
+  width: 250px;
+  height: 75%;
 }
 
-#donations{
-    width: 110%;
+#sorting {
+  width: 110%;
 }
 
-.searchBarParts{
-    color: white;
+#donations {
+  width: 110%;
 }
 
-.caseCards{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    justify-content: space-around;
-    align-items: center;
+.searchBarParts {
+  color: white;
 }
 
-.caseInfo{
-    gap: 15px;
+.caseCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
+  align-items: center;
 }
 
-.donations{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.caseInfo {
+  gap: 15px;
 }
 
-.caseName{
-    text-align: center;
+.donations {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.caseName {
+  text-align: center;
 }
