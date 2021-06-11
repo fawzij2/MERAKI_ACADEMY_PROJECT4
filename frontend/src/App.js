@@ -10,13 +10,21 @@ import CaseSearch from "./components/cases_search";
 import Update from "./components/case/updateCase";
 import Header from './components/header/index'
 
+import CreditCardAdd from "./components/add_creditcard/index"
+import AddNewCase from "./components/AddNewCase/index";
+import Profile from "./components/Profile/index"
 
 const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
+  const [nickName, setNickName] = useState("")
 
   useEffect(() => {
     if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("nickName")) setNickName(localStorage.getItem("nickName"));
   }, []);
 
   console.log("INSIDE APP: ", token);
@@ -24,7 +32,7 @@ const App = () => {
     <>
       <div className="App">
         <Header/>
-        <Navigation />
+        <Navigation token={token} />
         <Route exact path="/" render={() => <Home setPath={setPath} />} />
         <Route
           exact
@@ -43,7 +51,10 @@ const App = () => {
         />
         <Route exact path="/cases/:id" />
         <Route exact path="/update" render={() => <Update token={token} />} />
+        <Route exact path="/profile" render={() => <Profile nickName={nickName} />} />
+        <Route exact path="/cases/create"  render={() => <AddNewCase token={token}/>}  />
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
+        <Route exact path="/cases/:id/donate" render={()=><CreditCardAdd token={token}/>} />
       </div>
     </>
   );

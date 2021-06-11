@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navigation.css";
 
-const Navigation = () => {
+const Navigation = ({ token }) => {
   return (
     <div className="navBar">
       <div className="others">
@@ -27,20 +27,26 @@ const Navigation = () => {
           About Us
         </Link>
         <Link to="/volunteers" className="links">
-          Our Team
+          Our Volunteers
         </Link>
         <Link to="/contactus" className="links">
           Contact Us
         </Link>
       </div>
-      <div className="signing">
-        <Link to="/login" className="links logreg">
-          Login
+      {token ? (
+        <Link to="/profile" className="links logreg">
+          Profile
         </Link>
-        <Link to="/register" className="links logreg">
-          Register
-        </Link>
-      </div>
+      ) : (
+        <div className="signing">
+          <Link to="/login" className="links logreg">
+            Login
+          </Link>
+          <Link to="/register" className="links logreg">
+            Register
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

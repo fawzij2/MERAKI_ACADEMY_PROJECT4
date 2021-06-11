@@ -5,11 +5,13 @@ const bcrypt = require("bcrypt")
 
 const saveCard = (req,res)=>{
     const {cardNumber, cardHolder, expiryDate} = req.body;
+    const userId = req.token.userId;
     
     const newCard = new Card({
         cardNumber,
         cardHolder,
         expiryDate,
+        userId
     })
 
     newCard.save()

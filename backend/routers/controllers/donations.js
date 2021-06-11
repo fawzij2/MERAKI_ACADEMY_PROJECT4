@@ -16,8 +16,8 @@ const getAllDonations = (req, res) => {
 };
 
 const addNewDonation = (req, res) => {
-  const { caseId, donorId } = req.body;
-  const newDonation = new Donation({ caseId, donorId });
+  const { caseId, donorId,donationAmount } = req.body;
+  const newDonation = new Donation({ caseId, donorId,donationAmount });
   newDonation
     .save()
     .then((result) => {

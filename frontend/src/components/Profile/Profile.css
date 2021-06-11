@@ -1,11 +1,11 @@
-.outAdd{
+.outProfile{
     width: 100%;
+    height: 100%;
     padding: 1.5%;
-     
-      background: #f9f9f9
+    background: #f9f9f9
 }
 
-.Add{
+.profile{
     display: grid;
     justify-content: center; 
     gap: 15px;
@@ -15,19 +15,11 @@
     margin: auto;
     background: #fff;
     padding: 70px 50px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 5%) 
+    box-shadow: 0 0 15px rgb(0 0 0 / 5%)
+   
 }
 
-.input{
-    border: 0px;
-    outline:0;
-    width: 100%;
-
-   
-  }
-    
-
-  .profileButton{
+.addButton{
     background-color:#18b760!important;
     border-radius: 3px;
     color: white;
@@ -37,12 +29,4 @@
     cursor: pointer;
     border-color: #fff;
   
-  }
-  
-
-  .option{
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-   
-  }
+}

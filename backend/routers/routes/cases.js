@@ -18,6 +18,6 @@ casesRouter.get("/categeories/:category", getCasesByCategory);
 casesRouter.post("/categeories/:category", getCasesByCategory);
 casesRouter.put("/case/:id", authentication, updateCaseById);
 casesRouter.delete("/case/:id", authentication, deleteCaseById);
-casesRouter.post("/create", authentication, createNewCase);
+casesRouter.post("/create", authentication , createNewCase);
 
 module.exports = casesRouter;
