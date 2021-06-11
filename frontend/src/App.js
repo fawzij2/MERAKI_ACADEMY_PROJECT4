@@ -35,8 +35,10 @@ const App = () => {
     <>
       <div className="App">
         <Header />
+
         <Navigation token={token} setHomePageSection={setHomePageSection} />
         <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
+
         <Route
           exact
           path="/login"
