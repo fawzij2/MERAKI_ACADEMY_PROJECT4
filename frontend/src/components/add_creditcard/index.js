@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import "./add_creditcard.css";
-import {useParams} from "react-router-dom"
+import {useParams,useHistory} from "react-router-dom"
 import axios from "axios";
 import jwt from "jsonwebtoken"
 require(`dotenv`).config();
 
 
 const CreditCardAdd = ({token})=>{
-    const {id} = useParams()
+    const {id} = useParams();
+    const history = useHistory();
     const [donation, setDonation] = useState(0);
     const [cardHolder, setCardHolder] = useState("");
     const [cardNumber, setCardNumber] = useState();
@@ -42,19 +43,6 @@ const CreditCardAdd = ({token})=>{
         })
     }
 
-        axios.put(`http://localhost:5000/cases/case/${id}`,{
-            $inc: {'donatedAmount':donation},
-        },{
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then((result)=>{
-            console.log(result)
-        }).catch((err)=>{
-            console.log(err)
-            throw err
-        })
-
         axios.post(`http://localhost:5000/donations/create`,{
             caseId:id,
             donorId:userId,
@@ -64,6 +52,21 @@ const CreditCardAdd = ({token})=>{
                 'Authorization': `Bearer ${token}`
             }
         }).then((result)=>{
+            console.log(result)
+            
+        }).catch((err)=>{
+            console.log(err)
+            throw err
+        })
+
+        axios.put(`http://localhost:5000/cases/case/${id}`,{
+            $inc: {'donatedAmount':donation},
+        },{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((result)=>{
+            history.push("/donation_confirmed")
             console.log(result)
         }).catch((err)=>{
             console.log(err)
