@@ -90,3 +90,9 @@
   font-size: 32px;
   font-weight: bold;
 }
+
+@media screen and (max-width:750px) {
+  .categories{
+    grid-template-columns: 1fr;
+  }
+}
