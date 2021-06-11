@@ -9,7 +9,7 @@ import Register from "./components/auth/register/index";
 import CaseSearch from "./components/cases_search";
 import Update from "./components/case/updateCase";
 
-import Header from './components/header/header'
+import Header from './components/Header/header'
 
 
 
@@ -39,7 +39,7 @@ const App = () => {
       <div className="App">
         <Header />
 
-        <Navigation token={token} setHomePageSection={setHomePageSection} />
+        <Navigation token={token} setHomePageSection={setHomePageSection} setToken={setToken} />
         <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
 
         <Route

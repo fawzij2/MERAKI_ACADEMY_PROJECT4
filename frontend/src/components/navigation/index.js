@@ -3,7 +3,7 @@ import { Link,useHistory } from "react-router-dom";
 import "./navigation.css";
 
 
-const Navigation = ({ token,setHomePageSection }) => {
+const Navigation = ({ token,setHomePageSection,setToken }) => {
 
   const history = useHistory();
   return (
