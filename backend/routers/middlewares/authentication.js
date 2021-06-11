@@ -17,6 +17,7 @@ const authentication = (req, res, next) => {
       return res.status(403).json({ message: "forbidden" });
     }
     if (result) {
+   
       req.token = result;
       next();
     }
