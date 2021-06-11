@@ -40,9 +40,11 @@ export default function Login({ setToken, path }) {
   const ResponseGoogle = (response) => {
     console.log(response);
     console.log(response.accessToken);
+    console.log("name" , response.profileObj.givenName);
     setToken(response.accessToken);
     localStorage.setItem("token", response.accessToken);
-
+    localStorage.setItem("nickName", response.profileObj.givenName);
+    
     setLoginMessage("login successful");
     history.push(path);
   };
