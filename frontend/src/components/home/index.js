@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import SimpleImageSlider from "react-simple-image-slider";
 import "./home.css";
 import Volunteers from "../volunteers/index";
@@ -13,11 +13,20 @@ import building from "./building.png";
 import ContactUs from "../contactUs/index";
 import { useHistory, Link } from "react-router-dom";
 import Footer from "../footer/index";
+import {scroller} from "react-scroll";
 
-const Home = ({setPath}) => {
+const Home = ({setPath, homePageSection}) => {
+
   const images = [{ url: photo2 }, { url: photo3 }, { url: photo1 }];
   const history = useHistory();
   setPath("/")
+
+  useEffect(() => {
+    if (homePageSection !== ""){
+      console.log(homePageSection)
+      scroller.scrollTo(homePageSection,{smooth:true})
+    }
+  }, [homePageSection])
 
   return (
     <div>
@@ -32,7 +41,7 @@ const Home = ({setPath}) => {
       <hr />
       <About />
       <hr />
-      <div className="categories">
+      <div className="categories" id="categories">
         <div className="introduction">
           <p className="introText">
             We support a myriad of causes. Choose any of the categories to see

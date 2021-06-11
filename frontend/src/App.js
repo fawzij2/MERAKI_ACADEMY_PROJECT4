@@ -22,6 +22,7 @@ const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
   const [nickName, setNickName] = useState("");
+  const [homePageSection, setHomePageSection] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
@@ -37,8 +38,10 @@ const App = () => {
     <>
       <div className="App">
         <Header />
-        <Navigation token={token} setToken={setToken} />
-        <Route exact path="/" render={() => <Home setPath={setPath} />} />
+
+        <Navigation token={token} setHomePageSection={setHomePageSection} />
+        <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
+
         <Route
           exact
           path="/login"
