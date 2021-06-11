@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { GoogleLogin } from "react-google-login";
 
 import "./login.css";
 
@@ -20,13 +21,12 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
-
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
 
           setLoginMessage("login successful");
           history.push(path);
-          localStorage.setItem("nickName" , res.data.result.nickName )
+          localStorage.setItem("nickName", res.data.result.nickName);
         } else {
           setLoginMessage(res.data);
         }
@@ -35,6 +35,16 @@ export default function Login({ setToken, path }) {
         console.log(err);
         setLoginMessage("please try again");
       });
+  };
+
+  const ResponseGoogle = (response) => {
+    console.log(response);
+    console.log(response.accessToken);
+    setToken(response.accessToken);
+    localStorage.setItem("token", response.accessToken);
+
+    setLoginMessage("login successful");
+    history.push(path);
   };
 
   return (
@@ -72,6 +82,13 @@ export default function Login({ setToken, path }) {
         <h4 className="message" style={{ textAlign: "center" }}>
           {loginMessage}
         </h4>
+        <div>
+          <GoogleLogin
+            clientId="1018427859000-rr1mqigkk7fvghqfnh85ph78eru3lo8m.apps.googleusercontent.com"
+            onSuccess={ResponseGoogle}
+            onFailure={ResponseGoogle}
+          />
+        </div>
       </div>
     </div>
   );
