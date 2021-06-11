@@ -4,6 +4,7 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const CaseSearch = ({ setPath, id }) => {
+  setPath("/cases/categeories/:categeory")
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -11,8 +12,17 @@ const CaseSearch = ({ setPath, id }) => {
   const [donation, setDonation] = useState();
   const [sorting, setSorting] = useState("lowHigh");
   const [caseName, setCaseName] = useState("");
+  const [skip, setSkip] = useState(0);
+  const [limit, setLimit] = useState(18);
+  const nextPage = ()=>{
+    setSkip(skip+limit);
+  }
+  const previousPage= ()=>{
+    setSkip(skip-limit)
+  }
   useEffect(() => {
-    setPath(location.pathname);
+    // setPath(location.pathname);
+    
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {
@@ -26,15 +36,17 @@ const CaseSearch = ({ setPath, id }) => {
         donationNeeded: Number(donation),
         sorting: sorting,
         caseName: caseName,
+        skip: skip,
+        limit: limit,
       })
       .then((result) => {
         setCases(result.data);
         console.log(result.data);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response);
       });
-  }, [donation, sorting, caseName]);
+  }, [donation, sorting, caseName, skip, limit]);
   const searchDonations = () => {};
   return (
     <>
@@ -104,6 +116,11 @@ const CaseSearch = ({ setPath, id }) => {
               </div>
             );
           })}
+        </div>
+        <br/>
+        <div className="paginationButtons">
+        <a href="#" class="pagination" id="previous" onClick={()=>previousPage()}>❮</a>
+        <a href="#" class="pagination" id="next" onClick={()=>nextPage()}>❯</a>
         </div>
       </div>
     </>

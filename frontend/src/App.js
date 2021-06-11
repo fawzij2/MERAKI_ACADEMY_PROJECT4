@@ -10,18 +10,21 @@ import CaseSearch from "./components/cases_search";
 import Update from './components/case/updateCase'
 import IsClose from './components/IsClose'
 import Update from "./components/case/updateCase";
-import Header from "./components/Header/header";
+
+import Header from './components/Header/header'
+
+
 
 import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";
 import Profile from "./components/Profile/index";
 import DonationConfirm from "./components/donation_confirmed/index"
-import Logout from "./components/Logout/logout";
 
 const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
   const [nickName, setNickName] = useState("");
+  const [homePageSection, setHomePageSection] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
@@ -38,15 +41,25 @@ const App = () => {
       <div className="App">
 
         <Header />
-        <Navigation token={token} />
-        <Route exact path="/" render={()=><Home setPath={setPath}/>} />
-        <Route exact path="/login" render={()=><Login path={path} setToken={setToken} />} />
-        <Route exact path="/register" component={Register}/>
-        <Route exact path="/isClose" render={()=><IsClose token={token} />}/>
-		    <Route exact path="/cases/closed" render={()=><ClosedCases setPath={setPath} />}/>
-		    <Route path="/cases/categeories/:categeory" render={()=><CaseSearch setPath={setPath} />} />
-        <Route exact path = "/cases/:id" />
-      
+        <Navigation token={token} setHomePageSection={setHomePageSection} setToken={setToken} />
+        <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
+
+        <Route
+          exact
+          path="/login"
+          render={() => <Login path={path} setToken={setToken} />}
+        />
+        <Route exact path="/register" render={() => <Register />} />
+        <Route
+          exact
+          path="/cases/closed"
+          render={() => <ClosedCases setPath={setPath} />}
+        />
+        <Route
+          path="/cases/categeories/:categeory"
+          render={() => <CaseSearch setPath={setPath} />}
+        />
+        <Route exact path="/cases/:id" />
         <Route exact path="/update" render={() => <Update token={token} />} />
         <Route
           exact
@@ -65,11 +78,6 @@ const App = () => {
           exact
           path="/cases/:id/donate"
           render={() => <CreditCardAdd token={token} />}
-        />
-        <Route
-          exact
-          path="/logout"
-          render={() => <Logout />}
         />
       </div>
     </>

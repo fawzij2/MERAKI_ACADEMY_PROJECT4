@@ -8,7 +8,7 @@ import emp4 from "./emp4.jpg";
 
 const Volunteers = () => {
   return (
-    <div className="volunteers">
+    <div className="volunteers" id="volunteers">
       <div className="volIntro">
         <p className="volIntroText">Our Great team</p>
         <p className="volText">

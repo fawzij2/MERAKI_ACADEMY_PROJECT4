@@ -28,3 +28,4 @@ export default function ClosedCases({ setPath }) {
     })},[]);
     return <><div>{result}</div></>
 } 
+

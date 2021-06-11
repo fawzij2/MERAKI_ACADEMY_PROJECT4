@@ -84,6 +84,7 @@
 
 .logreg {
   position: relative;
+  text-align: right;
   float: right;
 }
 .others {
