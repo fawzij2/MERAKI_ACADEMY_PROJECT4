@@ -8,6 +8,7 @@ import Register from "./components/auth/register/index";
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
 import Update from "./components/case/updateCase";
+import Header from './components/Header/header'
 
 import CreditCardAdd from "./components/add_creditcard/index"
 import AddNewCase from "./components/AddNewCase/index";
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <>
       <div className="App">
+        <Header/>
         <Navigation token={token} />
         <Route exact path="/" render={() => <Home setPath={setPath} />} />
         <Route
