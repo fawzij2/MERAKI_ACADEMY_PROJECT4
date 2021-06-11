@@ -106,9 +106,6 @@ const Home = () => {
       <div>
         <Footer />
       </div>
-      <div>
-        <Link to="/update">my cases</Link>
-      </div>
     </div>
   );
 };
