@@ -14,6 +14,7 @@ const {
 casesRouter.get("/", getAllCases);
 casesRouter.get("/case/:id", getCaseById);
 casesRouter.get("/closed", getClosedCases);
+casesRouter.post("/closed", getClosedCases);
 casesRouter.get("/categeories/:category", getCasesByCategory);
 casesRouter.post("/categeories/:category", getCasesByCategory);
 casesRouter.put("/case/:id", authentication, updateCaseById);
