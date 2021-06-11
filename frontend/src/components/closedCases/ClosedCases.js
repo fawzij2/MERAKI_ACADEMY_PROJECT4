@@ -1,4 +1,4 @@
-import { React, useState,useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./closedCases.css";
 export default function ClosedCases({ setPath }) {
@@ -28,6 +28,3 @@ export default function ClosedCases({ setPath }) {
     })},[]);
     return <><div>{result}</div></>
 } 
-
-
-

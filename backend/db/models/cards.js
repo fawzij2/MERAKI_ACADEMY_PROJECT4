@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require ("bcrypt");
 
 const cardInfo = new mongoose.Schema({
-    cardNumber:{type:Number, required:true},
+    cardNumber:{type:String, required:true},
     cardHolder: {type:String, required:true},
     expiryDate:{type:String,required:true},
     userId:{type:mongoose.Schema.ObjectId, ref:"User"}

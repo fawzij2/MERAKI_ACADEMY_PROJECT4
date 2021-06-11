@@ -1,6 +1,7 @@
 const Case = require("./../../db/models/case");
 
 const createNewCase = (req, res) => {
+  console.log("create");
   const {
     caseName,
     category,
@@ -29,6 +30,7 @@ const createNewCase = (req, res) => {
     .catch((err) => {
       res.status(400);
       res.json(err);
+      console.log(err);
     });
 };
 
