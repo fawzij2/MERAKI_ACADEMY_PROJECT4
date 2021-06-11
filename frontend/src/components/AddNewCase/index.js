@@ -46,7 +46,6 @@ export default function AddNewCase({ token }) {
         // if (res.status===400) {
         //   setMessage("error");
         // }
-        console.log(err);
         throw err;
       });
   };

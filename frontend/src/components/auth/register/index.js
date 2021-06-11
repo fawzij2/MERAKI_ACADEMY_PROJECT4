@@ -60,20 +60,14 @@ export default function Register() {
 
   return (
     <div className="outRegister">
-
-      <div  className="register">
-      <h2 style={{ textAlign: "center" }}>Register</h2>
-      <h5 style={{ textAlign: "center" }}>Register your account</h5>
-
-
-     
-
-     
+      <div className="register">
+        <h2 style={{ textAlign: "center" }}>Register</h2>
+        <h5 style={{ textAlign: "center" }}>Register your account</h5>
 
         <fieldset>
           <legend>Nick Name</legend>
           <input
-          className="input"
+            className="input"
             type="text"
             placeholder="nick name here"
             onChange={(e) => {
@@ -85,7 +79,7 @@ export default function Register() {
         <fieldset>
           <legend>E-Mail</legend>
           <input
-          className="input"
+            className="input"
             type="text"
             placeholder="email here"
             onChange={(e) => {
@@ -97,8 +91,7 @@ export default function Register() {
         <fieldset>
           <legend>Password</legend>
           <input
-          
-          className="input"
+            className="input"
             type="password"
             placeholder="password here"
             onChange={(e) => {
@@ -110,7 +103,7 @@ export default function Register() {
         <fieldset>
           <legend>Confirm Password</legend>
           <input
-          className="input"
+            className="input"
             type="password"
             placeholder="Confirm password here"
             onChange={(e) => {
@@ -122,7 +115,7 @@ export default function Register() {
         <fieldset>
           <legend>Age</legend>
           <input
-          className="input"
+            className="input"
             type="number"
             placeholder="age here"
             onChange={(e) => {
@@ -134,7 +127,7 @@ export default function Register() {
         <fieldset>
           <legend>City</legend>
           <input
-          className="input"
+            className="input"
             type="text"
             placeholder="city here"
             onChange={(e) => {
@@ -146,7 +139,7 @@ export default function Register() {
         <fieldset>
           <legend>Phone Number</legend>
           <input
-          className="input"
+            className="input"
             type="text"
             placeholder="phone number here"
             onChange={(e) => {
@@ -158,7 +151,7 @@ export default function Register() {
         <fieldset>
           <legend>IBAN</legend>
           <input
-          className="input"
+            className="input"
             type="text"
             placeholder="IBAN here"
             onChange={(e) => {
@@ -169,9 +162,10 @@ export default function Register() {
         <button className="registerButton" onClick={postRegister}>
           REGISTER
         </button>
-        <p className="message"  style={{ textAlign: "center" }}   >{registerMessage}</p>
-
-    </div>
+        <p className="message" style={{ textAlign: "center" }}>
+          {registerMessage}
+        </p>
+      </div>
     </div>
   );
 }
