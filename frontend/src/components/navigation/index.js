@@ -61,6 +61,9 @@ const Navigation = ({ token,setHomePageSection,setToken }) => {
           <Link to="/register" className="links logreg">
             Register
           </Link>
+          <Link to="/isClose" className="dropDownLinks">
+          is Close
+          </Link>
         </div>
       )}
     </div>
