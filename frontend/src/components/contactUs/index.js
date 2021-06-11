@@ -51,7 +51,7 @@ const ContactUs = () => {
   }, 5000);
 
   return (
-    <div className="container">
+    <div className="container" id="contactUs">
       <div className="contact-section">
         <div className="contact-details">
           <h1>Contact Details:</h1>
