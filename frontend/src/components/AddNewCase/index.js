@@ -13,8 +13,9 @@ export default function AddNewCase({ token }) {
     " ",
     "Education",
     "Treatment",
-    "Restoration",
-    "Dept payment",
+    "Building",
+    "Dept",
+    "General"
   ];
   const yesNo = ["", "Yes", "No"];
 

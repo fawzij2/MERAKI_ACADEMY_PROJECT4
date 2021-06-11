@@ -14,7 +14,6 @@ import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";
 import Profile from "./components/Profile/index";
 import DonationConfirm from "./components/donation_confirmed/index"
-import Logout from "./components/Logout/logout";
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -71,11 +70,6 @@ const App = () => {
           exact
           path="/cases/:id/donate"
           render={() => <CreditCardAdd token={token} />}
-        />
-        <Route
-          exact
-          path="/logout"
-          render={() => <Logout />}
         />
       </div>
     </>
