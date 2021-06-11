@@ -8,6 +8,8 @@ import Register from "./components/auth/register/index";
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
 import Update from "./components/case/updateCase";
+import Header from './components/header/index'
+
 
 const App = () => {
   const [path, setPath] = useState("");
@@ -21,6 +23,7 @@ const App = () => {
   return (
     <>
       <div className="App">
+        <Header/>
         <Navigation />
         <Route exact path="/" render={() => <Home setPath={setPath} />} />
         <Route

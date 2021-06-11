@@ -4,43 +4,42 @@ import "./navigation.css";
 
 const Navigation = () => {
   return (
-    
     <div className="navBar">
       <div className="others">
-      <Link to="/" className="links">
-        Home
-      </Link>
-      <div className="dropdown">
-        <button className="dropbtn">
-          cases
-          <i className="fa fa-caret-down"></i>
-        </button>
-        <div className="dropdown-content">
-          <Link to="/cases" className="dropDownLinks">
-            available cases
-          </Link>
-          <Link to="/cases/closed" className="dropDownLinks">
-            closed cases
-          </Link>
+        <Link to="/" className="links">
+          Home
+        </Link>
+        <div className="dropdown">
+          <button className="dropbtn">
+            cases
+            <i className="fa fa-caret-down"></i>
+          </button>
+          <div className="dropdown-content">
+            <Link to="/cases" className="dropDownLinks">
+              available cases
+            </Link>
+            <Link to="/cases/closed" className="dropDownLinks">
+              closed cases
+            </Link>
+          </div>
         </div>
-      </div>
-      <Link to="/about" className="links">
-        About Us
-      </Link>
-      <Link to="/volunteers" className="links">
-        Our Volunteers
-      </Link>
-      <Link to="/contactus" className="links">
-        Contact Us
-      </Link>
+        <Link to="/about" className="links">
+          About Us
+        </Link>
+        <Link to="/volunteers" className="links">
+          Our Team
+        </Link>
+        <Link to="/contactus" className="links">
+          Contact Us
+        </Link>
       </div>
       <div className="signing">
-      <Link to="/login" className="links logreg">
-        Login
-      </Link>
-      <Link to="/register" className="links logreg">
-        Register
-      </Link>
+        <Link to="/login" className="links logreg">
+          Login
+        </Link>
+        <Link to="/register" className="links logreg">
+          Register
+        </Link>
       </div>
     </div>
   );

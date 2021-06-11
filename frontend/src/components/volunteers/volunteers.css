@@ -1,78 +1,99 @@
-.volunteers{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.volunteers {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-.employees{
-    
- width: 190px;
+.employees {
+  width: 190px;
   height: 190px;
-  border:2px solid #fff;
+  border: 2px solid #fff;
   -moz-box-shadow: 0px 6px 5px #ccc;
   -webkit-box-shadow: 0px 6px 5px #ccc;
   box-shadow: 0px 6px 5px #ccc;
-  -moz-border-radius:190px;
-  -webkit-border-radius:190px;
-  border-radius:190px;
-  image-rendering:pixelated;
+  -moz-border-radius: 190px;
+  -webkit-border-radius: 190px;
+  border-radius: 190px;
+  image-rendering: pixelated;
 }
 
-.volunteerCards{
+hr {
+  overflow: visible; /* For IE */
+  height: 30px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+  margin: 50px 50px 30px 80px;
+  width: 90%;
+}
+
+hr:before {
+  /* Not really supposed to work, but does */
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+.volunteerCards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+}
+
+.volIntro {
+  margin-bottom: 90px;
+}
+
+.volIntroText {
+  text-align: center;
+  font-weight: bold;
+  font-size: 35px;
+  color: rgba(11, 2, 47, 0.781);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.volText {
+  text-align: center;
+  font-size: 15px;
+}
+
+.volName {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 3px #fffc2e, 0 0 5px #03032e;
+  color: rgba(11, 2, 47, 0.781);
+}
+
+.volCard {
+  position: relative;
+  width: 20%;
+}
+
+@media screen and (max-width: 350px) {
+  .volunteerCards {
     display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 350px) {
+  .volunteerCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-around;
     align-items: center;
-    gap: 50px;
-}
-
-.volIntro{
-    margin-bottom: 90px;
-}
-
-.volIntroText{
-    text-align: center;
-    font-weight: bold;
-    font-size: 28px;
-    color:rgba(11, 2, 47, 0.781);
-}
-
-.volText{
-    text-align: center;
-    font-size: 15px;
-}
-
-.volName{
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 0 0 3px #fffc2e, 0 0 5px #03032e;
-    color: rgba(11, 2, 47, 0.781);
-}
-
-.volCard{
-    position: relative;
-    width: 20%;
-}
-
-
-@media screen and (max-width:350px) {
-    .volunteerCards{
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width:768px) and (min-width:350px) {
-    .volunteerCards{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        justify-content: space-around;
-        align-items: center;
-    }
+  }
 }

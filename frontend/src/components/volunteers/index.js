@@ -1,19 +1,19 @@
 import React from "react";
 import "./volunteers.css";
 
-import emp1 from './emp1.jpg'
-import emp2 from './emp2.jpg'
-import emp3 from './emp3.jpg'
-import emp4 from './emp4.jpg'
+import emp1 from "./emp1.jpg";
+import emp2 from "./emp2.jpg";
+import emp3 from "./emp3.jpg";
+import emp4 from "./emp4.jpg";
 
 const Volunteers = () => {
   return (
     <div className="volunteers">
       <div className="volIntro">
-        <p className="volIntroText">Our Great Volunteers</p>
+        <p className="volIntroText">Our Great team</p>
         <p className="volText">
-          Introducing our great volunteers who do great efforts in helping
-          others
+          Introducing our great Team who do great efforts in delivering your
+          donations.
         </p>
       </div>
       <div className="volunteerCards">

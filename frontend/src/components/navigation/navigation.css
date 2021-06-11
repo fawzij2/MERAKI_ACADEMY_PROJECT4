@@ -7,20 +7,21 @@
 /* Navbar container */
 .navBar {
   display: flex;
-  gap: 40%;
-  align-items:flex-end;
+  gap: 50%;
+  align-items: center;
   overflow: hidden;
   font-family: Arial;
-  border: 3px solid blue;
-  height: 100px;
+  border: 2px solid rgb(0, 0, 15);
   width: 100%;
+  border-top:none;
+  background-color: rgba(66, 65, 65, 0.137);
 }
 
 /* Links inside the navbar */
 .links {
   float: left;
   font-size: 16px;
-  color: #737373;
+  color: #0b082e;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -32,12 +33,12 @@
   overflow: hidden;
 }
 
-/* Dropdown button */ 
+/* Dropdown button */
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
+  color: #0b082e;
   outline: none;
-  color: #737373;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
@@ -81,14 +82,14 @@
   display: block;
 }
 
-.logreg{
-position: relative;
-float:right;
+.logreg {
+  position: relative;
+  float: right;
 }
-.others{
+.others {
   float: left;
 }
 
-.signing{
+.signing {
   float: right;
 }
