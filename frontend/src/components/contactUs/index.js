@@ -8,7 +8,7 @@ import "./ContactUS.css";
 const Result = () => {
   return (
     <div>
-      <p>
+      <p className="contactResult">
         Your Message was sent successfully! we will contact you as soon as
         possible{" "}
       </p>
@@ -45,6 +45,10 @@ const ContactUs = () => {
       }
     );
   };
+  
+  setTimeout(() => {
+    setResult(false)
+  }, 5000);
 
   return (
     <div className="container">
@@ -172,7 +176,7 @@ const ContactUs = () => {
               </tr>
             </tbody>
           </table>
-          <div className="contactResult">{result ? <Result /> : null}</div>
+          <div>{result ? <Result /> : null}</div>
         </div>
       </div>
     </div>
