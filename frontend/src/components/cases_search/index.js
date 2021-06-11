@@ -3,7 +3,7 @@ import "./cases_search.css";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const CaseSearch = ({ setPath, id }) => {
+const CaseSearch = ({ setPath }) => {
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -12,19 +12,25 @@ const CaseSearch = ({ setPath, id }) => {
   const [sorting, setSorting] = useState("lowHigh");
   const [caseName, setCaseName] = useState("");
   const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(18);
-  const nextPage = ()=>{
-    setSkip(skip+limit);
-  }
-  const previousPage= ()=>{
-    setSkip(skip-limit)
-  }
+  const [limit, setLimit] = useState(12);
+  const [docCount, setDocCount] = useState(0);
+  const nextPage = () => {
+    if (skip + limit - docCount < limit) {
+      setSkip(skip + limit);
+    }
+  };
+  const previousPage = () => {
+    if (skip > limit) {
+      setSkip(skip - limit);
+    }
+  };
   useEffect(() => {
     setPath(location.pathname);
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {
-        setCases(result.data);
+        setDocCount(result.data.docCount);
+        setCases(result.data.result);
       });
   }, []);
   useEffect(() => {
@@ -38,7 +44,8 @@ const CaseSearch = ({ setPath, id }) => {
         limit: limit,
       })
       .then((result) => {
-        setCases(result.data);
+        setDocCount(result.data.docCount);
+        setCases(result.data.result);
         console.log(result.data);
       })
       .catch((err) => {
@@ -115,10 +122,19 @@ const CaseSearch = ({ setPath, id }) => {
             );
           })}
         </div>
-        <br/>
+        <br />
         <div className="paginationButtons">
-        <a href="#" class="pagination" id="previous" onClick={()=>previousPage()}>❮</a>
-        <a href="#" class="pagination" id="next" onClick={()=>nextPage()}>❯</a>
+          <a
+            href="#"
+            class="pagination"
+            id="previous"
+            onClick={() => previousPage()}
+          >
+            ❮
+          </a>
+          <a href="#" class="pagination" id="next" onClick={() => nextPage()}>
+            ❯
+          </a>
         </div>
       </div>
     </>
