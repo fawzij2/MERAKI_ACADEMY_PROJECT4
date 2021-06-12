@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 import axios from "axios";
+import notFound from './notFound.png'
+import poor from './poor.jpg'
+import poor1 from './poor1.jpg'
+import poor2 from './poor2.jpg'
+import poor3 from './poor3.jpg'
+import './case.css'
 
 const Update = ({ token }) => {
-  console.log("INSIDE UPDATE : ", token);
+  const photos = [poor,poor1,poor2,poor3];
   const [cases, setCases] = useState([]);
   const [caseName, setCaseName] = useState("");
   const [category, setCategory] = useState("");
   const [isPrivate, setIsPrivate] = useState("");
   const [neededAmount, setNeededAmount] = useState(0);
   const [caseId, setCaseId] = useState("");
+  const [isClicked,setIsClicked] = useState(false)
+  const branchh = [
+    "",
+    "Education",
+    "Treatment",
+    "Building",
+    "Dept",
+    "General"
+  ];
+  const yesNo = ["", "Yes", "No"];
 
   useEffect(getCases, []);
 
@@ -27,7 +44,7 @@ const Update = ({ token }) => {
       });
   }
 
-  console.warn(cases);
+  console.warn("After Getting Cases: ",cases);
 
   const deleteCase = (id) => {
     axios
@@ -37,7 +54,7 @@ const Update = ({ token }) => {
         },
       })
       .then((result) => {
-        console.log(result.data);
+        console.log("After Deletion: ",result.data);
         getCases();
       })
       .catch((err) => {
@@ -48,7 +65,7 @@ const Update = ({ token }) => {
   const selectCase = (index) => {
     setCaseName(cases[index].caseName);
     setCategory(cases[index].category);
-    setIsPrivate(cases[index].isPrivate);
+    setIsPrivate(cases[index].isPrivate.toString());
     setNeededAmount(cases[index].neededAmount);
     setCaseId(cases[index]._id);
   };
@@ -58,7 +75,7 @@ const Update = ({ token }) => {
     axios
       .put(
         `http://localhost:5000/cases/case/${caseId}`,
-        { caseName, category, isPrivate, neededAmount },
+        {updates:{ caseName, category, isPrivate, neededAmount }},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,7 +83,7 @@ const Update = ({ token }) => {
         }
       )
       .then((result) => {
-        console.log(result.data);
+        console.log("After Editing: ",result.data);
         getCases();
       })
       .catch((err) => {
@@ -76,79 +93,80 @@ const Update = ({ token }) => {
 
   return (
     <div>
-      <div>
-        <table border="1">
-          <tbody>
-            <tr>
-              <th>Case Name</th>
-              <th>Case Category</th>
-              <th>Case Privacy</th>
-              <th>Case Amount</th>
-              <th></th>
-              <th></th>
-            </tr>
+      {cases.length ?
+      <div className="casesContainer">
             {cases.map((item, index) => {
               return (
-                <tr key={index}>
-                  <td>{item.caseName}</td>
-                  <td>{item.category}</td>
-                  <td>{item.isPrivate.toString()}</td>
-                  <td>{item.neededAmount}</td>
-                  <td>
-                    <button onClick={() => deleteCase(item._id)}>Delete</button>
-                  </td>
-                  <td>
-                    <button onClick={() => selectCase(index)}>Update</button>
-                  </td>
-                </tr>
+                <div className="myCaseContainer" key={index}>
+                <div className="caseInform">
+                  <div><img className="poorImages" src={poor}/></div>
+                  <div><span className="mainTitle">{item.caseName}</span></div>
+                  <div><span className="title">category: </span>{item.category}</div>
+                  <div><span className="title">Privacy: </span> {item.isPrivate=='Yes' ? <span>Private</span> : <span>Not Private</span>}</div>
+                  <div>
+                    <span className="title">Needed Amount: </span>{item.neededAmount}.JOD</div>
+                  <div>
+                    <button className="delBtn" onClick={() => deleteCase(item._id)}>Delete</button>
+                    <button className="updBtn" onClick={() => {selectCase(index);setIsClicked(true)}}>Update</button>
+                  </div>
+                </div>
+                </div>
               );
             })}
-          </tbody>
-        </table>
-      </div>
-      <div>
+            {isClicked?<div className="updateContainer">
         <input
           type="text"
           value={caseName}
+          placeholder="Case Name"
           onChange={(e) => {
             setCaseName(e.target.value);
           }}
         />
         <br />
+        <select
+            className="option"
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
+            {branchh.map((element, index) => (
+              <option value={element} key={index}>
+                {element}
+              </option>
+            ))}
+          </select>
         <br />
-        <input
-          type="text"
-          value={category}
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
-        />
-        <br />
-        <br />
-        <input
-          type="text"
-          value={isPrivate}
-          onChange={(e) => {
-            setIsPrivate(e.target.value);
-          }}
-        />
-        <br />
+        <select
+            value={isPrivate}
+            className="option"
+            onChange={(e) => {
+              setIsPrivate(e.target.value);
+            }}
+          >
+            {yesNo.map((element, index) => (
+              <option value={element} key={index}>
+                {element}
+              </option>
+            ))}
+          </select>
         <br />
         <input
           type="number"
           value={neededAmount}
+          placeholder="Needed Amount"
           onChange={(e) => {
             setNeededAmount(e.target.value);
           }}
         />
         <br />
-        <br />
-        <button type="submit" onClick={updateCase}>
+        <button className="updBtn2" type="submit" onClick={()=>{updateCase();setIsClicked(false)}}>
           Update
         </button>
         <br />
         <br />
-      </div>
+      </div>:<></>}
+      </div> : <div className="noCases">No Added Cases! <Link to='/profile'> Add One?</Link><div><img src={notFound}/></div></div>}
     </div>
   );
 };

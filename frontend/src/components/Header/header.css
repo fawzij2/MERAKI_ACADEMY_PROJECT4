@@ -1,9 +1,11 @@
 .Logo{
+    padding: 1% 1%;
     overflow: hidden;
     background-color: rgba(66, 65, 65, 0.137);
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1% ;
     width: 100%;
     border: black solid 2px;
     border-bottom:none;
