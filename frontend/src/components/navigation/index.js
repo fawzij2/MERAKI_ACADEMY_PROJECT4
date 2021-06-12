@@ -3,7 +3,7 @@ import { Link,useHistory } from "react-router-dom";
 import "./navigation.css";
 
 
-const Navigation = ({ token,setHomePageSection,setToken }) => {
+const Navigation = ({ token,setHomePageSection,setToken ,setAdmin}) => {
 
   const history = useHistory();
   return (
@@ -48,11 +48,15 @@ const Navigation = ({ token,setHomePageSection,setToken }) => {
         <div className="signing"><Link to="/profile" className="links logreg">
           Profile
         </Link>
-        <Link to ='/' className="links logreg" onClick={()=>{ localStorage.clear();setToken(null)}
+        <Link to ='/' className="links logreg" onClick={()=>{ localStorage.clear();setToken(null);setAdmin(false)}
     } >
         Logout
       </Link>
-      <Link to="/update" className="links logreg">my cases</Link></div>
+      <Link to="/update" className="links logreg">My Cases</Link>
+      <Link to="/isClosed" className="dropDownLinks">
+          is Closed
+          </Link>
+      </div>
       ) : (
         <div className="signing">
           <Link to="/login" className="links logreg">
@@ -60,9 +64,6 @@ const Navigation = ({ token,setHomePageSection,setToken }) => {
           </Link>
           <Link to="/register" className="links logreg">
             Register
-          </Link>
-          <Link to="/isClose" className="dropDownLinks">
-          is Close
           </Link>
         </div>
       )}

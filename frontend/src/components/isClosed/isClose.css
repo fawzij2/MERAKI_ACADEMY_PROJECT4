@@ -1,4 +1,4 @@
-button{
+.close{
     color: red;
     width: 60px;
     justify-content: center;
@@ -6,7 +6,7 @@ button{
     margin-left:170px
 }
 
-.test1 {
+.caseCard {
     border: solid 2px red;
     margin-left: 43px;
     margin-bottom: 43px;
