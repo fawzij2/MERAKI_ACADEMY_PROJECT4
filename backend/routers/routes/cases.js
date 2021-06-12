@@ -1,5 +1,6 @@
 const express = require("express");
 const authentication = require("../middlewares/authentication");
+const authorization = require("../middlewares/authorization");
 const casesRouter = express.Router();
 const {
   createNewCase,
@@ -9,6 +10,7 @@ const {
   getCaseById,
   deleteCaseById,
   getCasesByCategory,
+  closeCaseById
 } = require("./../controllers/cases");
 
 casesRouter.get("/", getAllCases);
@@ -19,5 +21,7 @@ casesRouter.post("/categeories/:category", getCasesByCategory);
 casesRouter.put("/case/:id", authentication, updateCaseById);
 casesRouter.delete("/case/:id", authentication, deleteCaseById);
 casesRouter.post("/create", authentication , createNewCase);
+casesRouter.put("/case/closed/:id", authentication,authorization("Close_Case"), closeCaseById);
+
 
 module.exports = casesRouter;

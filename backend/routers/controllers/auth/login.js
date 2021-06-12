@@ -26,7 +26,7 @@ const login = (req, res) => {
             res.status = 200;
             const payload = {
               userId: result1._id,
-              role: result1.role,
+              role: result1.role._id,
             };
             const options = {
               expiresIn: "4h",
