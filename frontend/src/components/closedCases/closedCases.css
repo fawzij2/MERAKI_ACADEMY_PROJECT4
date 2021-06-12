@@ -1,15 +1,68 @@
-.test {
-  border: solid 2px red;
-  margin-left: 43px;
-  margin-bottom: 43px;
-  margin-top: 43px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  width: 450px;
-  justify-content: center;
-  text-align: center;
-  flex-wrap: nowrap;
-  float: left;
-}
-
+.caseSearch {
+    width: 100%;
+  }
+  .searchBarSection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+    padding-top: 20px;
+    background-color: #061738;
+  }
+  
+  .searchBar {
+    color: white;
+    position: relative;
+    top: 7px;
+    width: 250px;
+    height: 75%;
+  }
+  
+  #sorting {
+    width: 110%;
+  }
+  
+  #donations {
+    width: 110%;
+  }
+  
+  .searchBarParts {
+    color: white;
+  }
+  
+  .caseCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .caseInfo {
+    gap: 15px;
+  }
+  
+  .donations {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .caseName {
+    text-align: center;
+  }
+  
+  .paginationButtons{
+      position: relative;
+      left: 46vw;
+  }
+  
+  .pagination{
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      transition: background-color .3s;
+      border: #ddd solid 2px;
+  }
+  .pagination:hover{
+      cursor: pointer;
+  }

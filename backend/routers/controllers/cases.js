@@ -45,13 +45,165 @@ const getAllCases = (req, res) => {
 };
 
 const getClosedCases = (req, res) => {
-  Case.find({ isClosed: true })
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      res.status(404).json(err);
-    });
+  const category = req.params.category;
+  const skip = req.body.skip;
+  const limit = req.body.limit;
+  console.log(req.body.sorting);
+  if (req.body.sorting) {
+    const donationNeeded = req.body.donationNeeded;
+    console.log(donationNeeded);
+    const caseSorting = req.body.sorting;
+    console.log(caseSorting);
+    const caseName = req.body.caseName;
+    console.log(caseName);
+    if (donationNeeded) {
+      if (donationNeeded < 5000) {
+        if (caseSorting === "lowHigh") {
+          Case.find({
+            $and: [
+              { neededAmount: { $lte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: true},
+            ],
+          })
+            .skip(skip)
+            .limit(limit)
+            .sort({ neededAmount: 1 })
+            .then((result) => {
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        } else if (caseSorting === "highLow") {
+          Case.find({
+            $and: [
+              { neededAmount: { $lte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: true},
+            ],
+          })
+            .skip(skip)
+            .limit(limit)
+            .sort({ neededAmount: -1 })
+            .then((result) => {
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        }
+      } else {
+        if (caseSorting === "lowHigh") {
+          Case.find({
+            $and: [
+              { neededAmount: { $gte: donationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: true},
+            ],
+          })
+            .skip(skip)
+            .limit(limit)
+            .sort({ neededAmount: 1 })
+            .then((result) => {
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        } else if (caseSorting === "highLow") {
+          Case.find({
+            $and: [
+              { neededAmount: { $gte: DonationNeeded } },
+              { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: true},
+            ],
+          })
+            .skip(skip)
+            .limit(limit)
+            .sort({ neededAmount: -1 })
+            .then((result) => {
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
+            })
+            .catch((err) => {
+              res.status(404).json(err);
+            });
+        }
+      }
+    } else {
+      if (caseSorting === "lowHigh") {
+        Case.find({
+          $and: [
+            { caseName: { $regex: caseName, $options: "i" } },
+            {isClosed: true},
+          ],
+        })
+          .skip(skip)
+          .limit(limit)
+          .sort({ neededAmount: 1 })
+          .then((result) => {
+            let docCount
+            Case.countDocuments().then((count)=>{
+              docCount = count;
+            }).catch((err)=>{console.log(err)})
+            res.status(200).json({result:result,docCount:docCount});
+          })
+          .catch((err) => {
+            res.status(404).json(err);
+          });
+      } else if (caseSorting === "highLow") {
+        Case.find({
+          $and: [
+            { caseName: { $regex: caseName, $options: "i" } },
+            {isClosed: true},
+          ],
+        })
+          .skip(skip)
+          .limit(limit)
+          .sort({ neededAmount: -1 })
+          .then((result) => {
+            let docCount
+            Case.countDocuments().then((count)=>{
+              docCount = count;
+            }).catch((err)=>{console.log(err)})
+            res.status(200).json({result:result,docCount:docCount});
+          })
+          .catch((err) => {
+            res.status(404).json(err);
+          });
+      }
+    }
+  } else {
+    Case.find({isClosed: true})
+      .skip(skip)
+      .limit(limit)
+      .then((result) => {
+        let docCount
+        Case.countDocuments().then((count)=>{
+          docCount = count;
+        }).catch((err)=>{console.log(err)})
+        res.status(200).json({result:result,docCount:docCount});
+      })
+      .catch((err) => {
+        res.status(404).json(err);
+      });
+  }
 };
 
 const updateCaseById = (req, res) => {
@@ -116,13 +268,18 @@ const getCasesByCategory = (req, res) => {
               { category: category },
               { neededAmount: { $lte: donationNeeded } },
               { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: false},
             ],
           })
             .skip(skip)
             .limit(limit)
             .sort({ neededAmount: 1 })
             .then((result) => {
-              res.status(200).json(result);
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
             })
             .catch((err) => {
               res.status(404).json(err);
@@ -133,13 +290,18 @@ const getCasesByCategory = (req, res) => {
               { category: category },
               { neededAmount: { $lte: donationNeeded } },
               { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: false},
             ],
           })
             .skip(skip)
             .limit(limit)
             .sort({ neededAmount: -1 })
             .then((result) => {
-              res.status(200).json(result);
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
             })
             .catch((err) => {
               res.status(404).json(err);
@@ -152,13 +314,18 @@ const getCasesByCategory = (req, res) => {
               { category: category },
               { neededAmount: { $gte: donationNeeded } },
               { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: false},
             ],
           })
             .skip(skip)
             .limit(limit)
             .sort({ neededAmount: 1 })
             .then((result) => {
-              res.status(200).json(result);
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
             })
             .catch((err) => {
               res.status(404).json(err);
@@ -169,13 +336,18 @@ const getCasesByCategory = (req, res) => {
               { category: category },
               { neededAmount: { $gte: DonationNeeded } },
               { caseName: { $regex: caseName, $options: "i" } },
+              {isClosed: false},
             ],
           })
             .skip(skip)
             .limit(limit)
             .sort({ neededAmount: -1 })
             .then((result) => {
-              res.status(200).json(result);
+              let docCount
+              Case.countDocuments().then((count)=>{
+                docCount = count;
+              }).catch((err)=>{console.log(err)})
+              res.status(200).json({result:result,docCount:docCount});
             })
             .catch((err) => {
               res.status(404).json(err);
@@ -188,13 +360,18 @@ const getCasesByCategory = (req, res) => {
           $and: [
             { category: category },
             { caseName: { $regex: caseName, $options: "i" } },
+            {isClosed: false},
           ],
         })
           .skip(skip)
           .limit(limit)
           .sort({ neededAmount: 1 })
           .then((result) => {
-            res.status(200).json(result);
+            let docCount
+            Case.countDocuments().then((count)=>{
+              docCount = count;
+            }).catch((err)=>{console.log(err)})
+            res.status(200).json({result:result,docCount:docCount});
           })
           .catch((err) => {
             res.status(404).json(err);
@@ -204,13 +381,18 @@ const getCasesByCategory = (req, res) => {
           $and: [
             { category: category },
             { caseName: { $regex: caseName, $options: "i" } },
+            {isClosed: false},
           ],
         })
           .skip(skip)
           .limit(limit)
           .sort({ neededAmount: -1 })
           .then((result) => {
-            res.status(200).json(result);
+            let docCount
+            Case.countDocuments().then((count)=>{
+              docCount = count;
+            }).catch((err)=>{console.log(err)})
+            res.status(200).json({result:result,docCount:docCount});
           })
           .catch((err) => {
             res.status(404).json(err);
@@ -218,11 +400,15 @@ const getCasesByCategory = (req, res) => {
       }
     }
   } else {
-    Case.find({ category: category })
+    Case.find({$and: [{ category: category },{isClosed: false},]})
       .skip(skip)
       .limit(limit)
       .then((result) => {
-        res.status(200).json(result);
+        let docCount
+        Case.countDocuments().then((count)=>{
+          docCount = count;
+        }).catch((err)=>{console.log(err)})
+        res.status(200).json({result:result,docCount:docCount});
       })
       .catch((err) => {
         res.status(404).json(err);
