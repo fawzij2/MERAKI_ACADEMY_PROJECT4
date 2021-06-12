@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./closedCases.css";
+import poor from './poor3.jpg'
 
 export default function ClosedCases({ setPath }) {
   const history = useHistory();
@@ -108,7 +109,7 @@ export default function ClosedCases({ setPath }) {
                 }}
               >
                 <div className="casePic">
-                  <img className="casePhoto"></img>
+                <img className="casePhoto" src={poor}/>
                 </div>
                 <div className="caseInfo">
                   <div className="donations">
