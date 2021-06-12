@@ -108,12 +108,12 @@ export default function ClosedCases({ setPath }) {
                 }}
               >
                 <div className="casePic">
-                  <img></img>
+                  <img className="casePhoto"></img>
                 </div>
                 <div className="caseInfo">
                   <div className="donations">
-                    <div>Goal: {elem.neededAmount}</div>
-                    <div>Progress: {elem.donatedAmount}</div>
+                    <div className="amounts">Goal: {elem.neededAmount}</div>
+                    <div className="amounts">Progress: {elem.donatedAmount}</div>
                   </div>
                   <div className="caseName">{elem.caseName}</div>
                 </div>
