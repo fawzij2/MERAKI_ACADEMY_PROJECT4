@@ -5,7 +5,6 @@ import axios from "axios";
 import poor from './poor2.jpg'
 
 const CaseSearch = ({ setPath, token }) => {
-  setPath("/cases/categeories/:categeory");
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -16,6 +15,7 @@ const CaseSearch = ({ setPath, token }) => {
   const [skip, setSkip] = useState(0);
   const [limit, setLimit] = useState(12);
   const [docCount, setDocCount] = useState(0);
+  setPath(`/cases/categeories/${categeory}`);
   const nextPage = () => {
     if (skip + limit - docCount < limit) {
       setSkip(skip + limit);
@@ -26,9 +26,7 @@ const CaseSearch = ({ setPath, token }) => {
       setSkip(skip - limit);
     }
   };
-  const donate = ()=>{
-    
-  }
+  
   useEffect(() => {
     // setPath(location.pathname);
 
@@ -139,13 +137,13 @@ const CaseSearch = ({ setPath, token }) => {
         <div className="paginationButtons">
           <a
             href="#"
-            class="pagination"
+            className="pagination"
             id="previous"
             onClick={() => previousPage()}
           >
             ❮
           </a>
-          <a href="#" class="pagination" id="next" onClick={() => nextPage()}>
+          <a href="#" className="pagination" id="next" onClick={() => nextPage()}>
             ❯
           </a>
         </div>

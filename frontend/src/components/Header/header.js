@@ -6,7 +6,7 @@ import logo from './logo.png'
 const Header = ()=>{
     return(
         <div className="Logo">
-            <img src={logo}/>
+            <img src={logo}/><h1>BLISS</h1>
         </div>
     )
 }
