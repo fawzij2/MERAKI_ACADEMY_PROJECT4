@@ -2,14 +2,13 @@ const Case = require("./../../db/models/case");
 
 const createNewCase = (req, res) => {
   console.log("create");
+  const userId = req.token.userId;
   const {
     caseName,
     category,
     neededAmount,
     address,
     isPrivate,
-    isClosed,
-    userId,
   } = req.body;
 
   const newCase = new Case({
@@ -18,7 +17,7 @@ const createNewCase = (req, res) => {
     neededAmount,
     address,
     isPrivate,
-    isClosed,
+    isClosed:false,
     userId,
     donatedAmount:0
   });
