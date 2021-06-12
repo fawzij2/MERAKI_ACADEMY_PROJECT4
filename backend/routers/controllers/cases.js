@@ -20,6 +20,7 @@ const createNewCase = (req, res) => {
     isPrivate,
     isClosed,
     userId,
+    donatedAmount:0
   });
 
   newCase
