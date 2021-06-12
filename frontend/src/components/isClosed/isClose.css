@@ -39,21 +39,9 @@ select{
     font-family: arial;
 }
 
-.noCases{
-    text-align: center;
-    margin-top: 50px;
-}
-
-.delBtn{
-    width: 50%;
-    background-color: rgb(209, 12, 12);
-    color: cornsilk;
-    height: 30px;
-}
-
 .updBtn{
     width: 50%;
-    background-color: rgb(11, 60, 116);
+    background-color: rgb(207, 123, 12);
     color: cornsilk;
     height: 30px;
 }

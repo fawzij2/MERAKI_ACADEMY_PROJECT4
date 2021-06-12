@@ -6,12 +6,12 @@ import "./login.css";
 
 import { useHistory } from "react-router-dom";
 
-export default function Login({ setToken, path }) {
+export default function Login({ setToken, path,setAdmin }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
-
+  const AdminRoleId = "60c460a01d246d3110e885f9";
   const loginFun = () => {
     axios
       .post("http://localhost:5000/login", {
@@ -21,9 +21,10 @@ export default function Login({ setToken, path }) {
       .then((res) => {
         console.log(res);
         if (res.data.token) {
+          if (res.data.result.role===AdminRoleId)
+            setAdmin(true);
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
-
           setLoginMessage("login successful");
           history.push(path);
           localStorage.setItem("nickName", res.data.result.nickName);
