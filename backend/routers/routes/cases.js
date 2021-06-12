@@ -10,10 +10,12 @@ const {
   getCaseById,
   deleteCaseById,
   getCasesByCategory,
-  closeCaseById
+  closeCaseById,
+  getAvailableCases
 } = require("./../controllers/cases");
 
 casesRouter.get("/", getAllCases);
+casesRouter.get('/available',getAvailableCases)
 casesRouter.get("/case/:id", getCaseById);
 casesRouter.get("/closed", getClosedCases);
 casesRouter.get("/categeories/:category", getCasesByCategory);

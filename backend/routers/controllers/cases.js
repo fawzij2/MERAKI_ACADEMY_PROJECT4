@@ -54,6 +54,15 @@ const getClosedCases = (req, res) => {
     });
 };
 
+const getAvailableCases =(req,res)=>{
+  Case.find({isClosed:false}).then((result)=>{
+  res.status(200).json(result)
+  .catch(err=>{
+    res.status(400).json(err)
+  })
+})
+}
+
 const updateCaseById = (req, res) => {
   const id = req.params.id;
   const updates = req.body.updates;
@@ -251,5 +260,6 @@ module.exports = {
   getCaseById,
   deleteCaseById,
   getCasesByCategory,
-  closeCaseById
+  closeCaseById,
+  getAvailableCases
 };
