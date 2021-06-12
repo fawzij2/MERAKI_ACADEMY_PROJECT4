@@ -8,7 +8,7 @@ import Register from "./components/auth/register/index";
 // import AddNewCase from "./components/AddNewCase/index"
 import CaseSearch from "./components/cases_search";
 import Update from './components/case/updateCase'
-import IsClose from './components/IsClose'
+import IsClose from './components/isClosed/IsClose'
 import Header from './components/Header/header'
 import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";

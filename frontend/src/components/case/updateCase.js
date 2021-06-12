@@ -4,12 +4,11 @@ import axios from "axios";
 import notFound from './notFound.png'
 import poor from './poor.jpg'
 import poor1 from './poor1.jpg'
-import poor2 from './poor2.jpg'
 import poor3 from './poor3.jpg'
 import './case.css'
 
 const Update = ({ token }) => {
-  const photos = [poor,poor1,poor2,poor3];
+  const photos = [poor,poor1,poor3];
   const [cases, setCases] = useState([]);
   const [caseName, setCaseName] = useState("");
   const [category, setCategory] = useState("");

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./cases_search.css";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import poor from './poor2.jpg'
 
 const CaseSearch = ({ setPath, token }) => {
   setPath("/cases/categeories/:categeory");
@@ -110,7 +111,7 @@ const CaseSearch = ({ setPath, token }) => {
                 key={i}
                 className="caseCard">
                 <div className="casePic">
-                  <img className="casePhoto"></img>
+                  <img className="casePhoto" src={poor}/>
                 </div>
                 <div className="caseInfo">
                   <div className="donations">
