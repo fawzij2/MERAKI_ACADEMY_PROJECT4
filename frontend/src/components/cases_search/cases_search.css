@@ -1,5 +1,6 @@
 .caseSearch {
   width: 100%;
+  overflow-x: hidden;
 }
 .searchBarSection {
   display: flex;
