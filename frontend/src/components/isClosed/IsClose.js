@@ -22,7 +22,7 @@ export default function IsClose({ token,isAdmin }) {
   
   useEffect(() => {
     axios
-      .get("http://localhost:5000/cases")
+      .get("http://localhost:5000/cases/available")
       .then((result) => {
         setResult(
           result.data.map((item, i) => {
