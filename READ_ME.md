@@ -68,10 +68,9 @@ Run The Backend:
 npm run start
 ```
 
-As A Test, Try To Send A Contact Message
+As A Response :
 ```
-Name: {your name} , Email: {your email}
-Subject : {anything you want} , Message : {Hello There}
+Our home webpage must have appeared.
 ```
 ## 🎈 Usage <a name="usage"></a>
 
