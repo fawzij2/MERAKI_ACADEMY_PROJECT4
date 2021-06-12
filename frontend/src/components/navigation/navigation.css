@@ -7,7 +7,7 @@
 /* Navbar container */
 .navBar {
   display: flex;
-  gap: 43%;
+  gap: 35%;
   align-items: center;
   overflow: hidden;
   font-family: Arial;

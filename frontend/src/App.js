@@ -38,7 +38,7 @@ const App = () => {
       <div className="App">
 
         <Header />
-        <Navigation token={token} setHomePageSection={setHomePageSection} setToken={setToken} setAdmin={setAdmin}/>
+        <Navigation token={token} setHomePageSection={setHomePageSection} setToken={setToken} setAdmin={setAdmin} isAdmin={isAdmin}/>
         <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
 
         <Route
@@ -64,7 +64,7 @@ const App = () => {
           render={() => <CaseSearch setPath={setPath} />}
         />
         <Route exact path="/cases/:id" />
-        <Route exact path="/update" render={() => <Update token={token} />} />
+        <Route exact path="/myCases" render={() => <Update token={token} />} />
         <Route
           exact
           path="/profile"

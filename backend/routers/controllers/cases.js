@@ -99,15 +99,12 @@ const deleteCaseById = (req, res) => {
 const closeCaseById=(req,res)=>{
   const id = req.params.id;
   const updates = req.body.updates;
-console.log(updates);
-console.log(id);
   Case.findOneAndUpdate({ _id: id }, updates, { new: true })
     .then((result) => {
       res.status(200).json(result);
     })
     .catch((err) => {
       console.log(err);
-
       res.status(404).json(err);
     });
 }

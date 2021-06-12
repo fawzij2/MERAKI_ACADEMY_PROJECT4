@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import poor from './poor1.jpg'
+
 import "./isClose.css";
 export default function IsClose({ token,isAdmin }) {
   const [result, setResult] = useState([]);
@@ -23,19 +25,22 @@ export default function IsClose({ token,isAdmin }) {
       .get("http://localhost:5000/cases")
       .then((result) => {
         setResult(
-          result.data.map((elem, i) => {
+          result.data.map((item, i) => {
             return (
-              <div key={i} className="caseCard">
-                <p>{<img src="" alt="case image" />}</p>
-                <p>{"Category : " + elem.category}</p>
-                <p>{"Case Name : " + elem.caseName}</p>
-                <p>{"Needed Amount : " + elem.neededAmount}</p>
-                <p>{"Address : " + elem.address}</p>
-                <p>{"is closed : " + elem.isClosed}</p>
-                <p></p>
-                {isAdmin ? <button className="close" onClick={() => update(elem._id)}>update</button>:<></>}
-              </div>
-            );
+              <div className="myCaseContainer" key={i}>
+                <div className="caseInform" >
+                  <div><img className="poorImages" src={poor}/></div>
+                  <div><span className="mainTitle">{item.caseName}</span></div>
+                  <div><span className="title">category: </span>{item.category}</div>
+                  <div><span className="title">Is Closed: </span> {item.isClosed ? <span>Closed</span> : <span>Not Closed</span>}</div>
+                  <div>
+                    <span className="title">Needed Amount: </span>{item.neededAmount}.JOD</div>
+                  <div>
+                  {isAdmin ? <button className="updBtn" onClick={() => update(item._id)}>Close Case</button>:<></>}
+                  </div>
+                </div>
+                </div>
+            );                
           })
         );
       })
@@ -45,7 +50,7 @@ export default function IsClose({ token,isAdmin }) {
   }, [update1]);
   return (
     <>
-      <div>{result}</div>
+      <div className="casesContainer">{result}</div>
     </>
   );
 }
