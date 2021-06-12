@@ -3,9 +3,8 @@ import "./cases_search.css";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
-
-const CaseSearch = ({ setPath }) => {
-  setPath("/cases/categeories/:categeory")
+const CaseSearch = ({ setPath, token }) => {
+  setPath("/cases/categeories/:categeory");
   const { categeory } = useParams();
   const history = useHistory();
   const location = useLocation();
@@ -26,9 +25,12 @@ const CaseSearch = ({ setPath }) => {
       setSkip(skip - limit);
     }
   };
+  const donate = ()=>{
+    
+  }
   useEffect(() => {
     // setPath(location.pathname);
-    
+
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {
@@ -106,20 +108,27 @@ const CaseSearch = ({ setPath }) => {
             return (
               <div
                 key={i}
-                className="caseCard"
-                onClick={() => {
-                  history.push(`/cases/${elem._id}`);
-                }}
-              >
+                className="caseCard">
                 <div className="casePic">
-                  <img></img>
+                  <img className="casePhoto"></img>
                 </div>
                 <div className="caseInfo">
                   <div className="donations">
-                    <div>Goal: {elem.neededAmount}</div>
-                    <div>Progress: {elem.donatedAmount}</div>
+                    <div className="amounts">Goal: {elem.neededAmount}</div>
+                    <div className="amounts">
+                      Progress: {elem.donatedAmount}
+                    </div>
                   </div>
                   <div className="caseName">{elem.caseName}</div>
+                  <div className="buttonDiv">
+                    <button className="donate_Button" onClick={()=>{
+                      if(token){
+                        history.push(`/cases/${elem._id}/donate`);
+                      } else{
+                        history.push("/login");
+                      }
+                    }}>Donate</button>
+                  </div>
                 </div>
               </div>
             );

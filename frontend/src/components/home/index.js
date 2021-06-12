@@ -69,7 +69,7 @@ const Home = ({setPath, homePageSection}) => {
           <div
             className="categoryBox1"
             onClick={(e) => {
-              history.push(`/cases/categeories/Educational`);
+              history.push(`/cases/categeories/Education`);
             }}
           >
             <img src={educational} className="categoriesPics"></img>
@@ -78,7 +78,7 @@ const Home = ({setPath, homePageSection}) => {
           <div
             className="categoryBox2"
             onClick={(e) => {
-              history.push(`/cases/categeories/Health`);
+              history.push(`/cases/categeories/Treatment`);
             }}
           >
             <img src={medical} className="categoriesPics"></img>
@@ -87,7 +87,7 @@ const Home = ({setPath, homePageSection}) => {
           <div
             className="categoryBox2"
             onClick={(e) => {
-              history.push(`/cases/categeories/Debts`);
+              history.push(`/cases/categeories/Dept`);
             }}
           >
             <img src={debt} className="categoriesPics"></img>
