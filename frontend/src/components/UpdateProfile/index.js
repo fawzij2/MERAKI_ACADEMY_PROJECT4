@@ -1,13 +1,10 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./update.css";
 
-
 import { Route, useHistory } from "react-router-dom";
 
-
-
-export default function UpdateProfile({token}) {
+export default function UpdateProfile({ token }) {
   const history = useHistory();
 
   const [nickName, setNickName] = useState("");
@@ -18,31 +15,28 @@ export default function UpdateProfile({token}) {
   const [IBAN, setIBAN] = useState("");
   const [userInfo, setUserInfo] = useState([]);
 
- const updateButton=()=>{
-   console.log("frooont");
+  const updateButton = () => {
+    console.log("frooont");
     axios
-    .put("http://localhost:5000/user/update/profile", {
-     update:{nickName,
-      email,
-      age,
-      city,
-      phoneNo,
-      IBAN,} 
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((result) => {
-    console.log("update resulllllllt",result.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  history.push("/profile")
-  }
-
+      .put(
+        "http://localhost:5000/user/update/profile",
+        {
+          update: { nickName, email, age, city, phoneNo, IBAN },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        console.log("update resulllllllt", result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    history.push("/profile");
+  };
 
   useEffect(() => {
     axios
@@ -52,16 +46,13 @@ export default function UpdateProfile({token}) {
         },
       })
       .then((result) => {
-       
- 
-  setNickName(result.data.nickName)
-  setEmail(result.data.email)
-  setAge(result.data.age)
-  setCity(result.data.city)
-  setPhoneNo(result.data.phoneNo)
-  setIBAN(result.data.IBAN)
+        setNickName(result.data.nickName);
+        setEmail(result.data.email);
+        setAge(result.data.age);
+        setCity(result.data.city);
+        setPhoneNo(result.data.phoneNo);
+        setIBAN(result.data.IBAN);
         setUserInfo(result.data);
-       
       })
       .catch((err) => {
         console.log(err);
@@ -69,12 +60,8 @@ export default function UpdateProfile({token}) {
   }, []);
 
   return (
-
-
-
-
- 
-    <div>
+    <div className="outProfile">
+    <div className="profile">
       <fieldset>
         <legend>Name</legend>
         <input
@@ -155,6 +142,7 @@ export default function UpdateProfile({token}) {
       <button className="registerButton" onClick={updateButton}>
         Update
       </button>
+    </div>
     </div>
   );
 }
