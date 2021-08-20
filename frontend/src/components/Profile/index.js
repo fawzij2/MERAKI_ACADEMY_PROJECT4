@@ -60,7 +60,7 @@ export default function Profile({ nickName, token }) {
         <button
           className="addButton"
           onClick={() => {
-            history.push("/cases/create");
+            history.push("/profile/update");
           }}
         >
           Update profile{" "}

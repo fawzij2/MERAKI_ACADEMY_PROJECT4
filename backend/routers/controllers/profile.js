@@ -1,5 +1,5 @@
 const { User } = require("./../../db/models/user");
-const  Case  = require("./../../db/models/case");
+const Case = require("./../../db/models/case");
 
 // get user by id function
 const getUserById = (req, res) => {
@@ -7,15 +7,28 @@ const getUserById = (req, res) => {
   const userId = req.token.userId;
   User.findOne({ _id: userId })
     .then((result) => {
-      res.status=200;
+      res.status = 200;
       res.json(result);
     })
     .catch((err) => {
-      res.status=400;
+      res.status = 400;
       res.json(err);
     });
 };
 
+//update user info
+const updateUser = (req, res) => {
+  console.log("reach user");
+  const _id = req.token.userId;
+  const update = req.body.update
+  User.findByIdAndUpdate(_id, update, { new: true })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
 // get cases by user function
 const getMyCases = (req, res) => {
   const userId = req.token.userId;
@@ -25,7 +38,7 @@ const getMyCases = (req, res) => {
       res.json(result);
     })
     .catch((err) => {
-      res.status=400;
+      res.status = 400;
       res.json(err);
     });
 };
@@ -39,7 +52,7 @@ const getCasesByUser = (req, res) => {
       res.json(result);
     })
     .catch((err) => {
-      res.status=400;
+      res.status = 400;
       res.json(err);
     });
 };
@@ -47,5 +60,6 @@ const getCasesByUser = (req, res) => {
 module.exports = {
   getUserById,
   getMyCases,
-  getCasesByUser
+  getCasesByUser,
+  updateUser
 };
