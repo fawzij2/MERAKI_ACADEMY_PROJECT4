@@ -5,7 +5,7 @@ const { getUserById, getMyCases, getCasesByUser } = require("./../controllers/pr
 const profileRouter = express.Router();
 
 
-// profileRouter.get("/:id", getUserById);
+profileRouter.get("/profile",authentication,getUserById);
 profileRouter.get("/cases",authentication, getMyCases);
 profileRouter.get("/:id/cases", getCasesByUser);
 

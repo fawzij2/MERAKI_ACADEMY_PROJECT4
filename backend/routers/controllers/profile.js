@@ -3,7 +3,8 @@ const  Case  = require("./../../db/models/case");
 
 // get user by id function
 const getUserById = (req, res) => {
-  const userId = req.params.id;
+  // const userId = req.params.id;
+  const userId = req.token.userId;
   User.findOne({ _id: userId })
     .then((result) => {
       res.status=200;

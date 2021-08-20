@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const options = {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
-	useFindAndModify: false,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 };
-
+console.log(process.env.DB_URI);
 // connecting mongoose
-mongoose.connect(process.env.DB_URI, options).then(
-	() => {
-		console.log('DB Ready To Use');
-	},
-	(err) => {
-		console.log(err);
-	},
-);
+mongoose
+  .connect(process.env.DB_URI, options)
+  .then(() => console.log("connection made successfully"))
+  .catch((err) => console.log("error message", err.message));
+
+// mongoose.connect(process.env.DB_URI, options).then(() => console.log('connection made successfully')).catch(err => console.log('error message', err.message))
