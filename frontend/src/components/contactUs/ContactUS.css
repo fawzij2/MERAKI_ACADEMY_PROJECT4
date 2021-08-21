@@ -1,51 +1,39 @@
-.icon {
-  width: 30px;
-}
-
-.contactResult{
+.contactResult {
   margin-left: 50px;
 }
+.contactResult p {
+  color: #282c34b6;
+  text-align: justify;
+}
+#contactUs {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  min-height: 100%;
+  background-color: #1F2637;
+}
+.contact-details table {
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  color:white;
 
-.container {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 100px;
 }
 
-.head {
+.contact-details table .icon {
+  width: 30px;
+}
+.contact-details table .head {
   font-size: 20px;
   margin: 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1 {
-  color: rgba(11, 2, 47, 0.781);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.tbody {
+.contact-details table .tbody {
   font-size: 15px;
   margin: 15px;
-  color: #282c3493;
-}
-
-table {
-  border-collapse: separate;
-  border-spacing: 0 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-  color: rgb(11, 21, 78);
-}
-
-p {
-  color: #282c34b6;
-}
-
-.btn {
-  width: 195px;
-  border-radius: 5px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgba(245, 229, 8, 0.582);
+  color:white;
 }
 
 .contact-section {
@@ -56,26 +44,71 @@ p {
   width: 100vw;
   gap: 150px;
 }
+.contact-details {
+  width: 50%;
+  margin-left: 20px;
+}
 
+.contact-details h1 {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: 700;
+  color:white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-details p {
+  color:white;
+  text-align: justify;
+  margin-left: 12px;
+}
+
+.vl {
+  border-left: 4px solid #14b761;
+  height: 270px;
+  left: 60%;
+  margin-left: -3px;
+  top: 0;
+}
 .contact-form {
+
   width: 85vw;
   margin-left: -75px;
+
 }
 
 .contact-form h1 {
-  margin-left: 40px;
+  margin-left: 20px;
+  font-weight: 700;
+  color:white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .contact-form table {
   border-collapse: separate;
   border-spacing: 50px 20px;
+  color:white;
+
 }
 
+.contact-form input {
+  padding: 10px;
+  border-radius: 5px;
+}
 .contact-form textarea {
   resize: none;
   padding: 10px;
-  width: 195px;
+  width: 187px;
+  height: 100px;
+  border-radius: 5px;
 }
+.btn {
+  width: 195px;
+  border-radius: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #14b761;
+  color:white;
+
 
 .contact-details {
   width: 85vw;
@@ -83,11 +116,7 @@ p {
 
 .btn:hover {
   cursor: pointer;
-  background-color: rgba(51, 51, 51, 0.219);
-}
-
-input {
-  padding: 10px;
+  background-color: #ffc039;
 }
 
 @media screen and (max-width: 350px) {

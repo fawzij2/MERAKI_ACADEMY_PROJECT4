@@ -98,10 +98,10 @@ const Update = ({ token }) => {
               return (
                 <div className="myCaseContainer" key={index}>
                 <div className="caseInform">
-                  <div><img className="poorImages" src={poor}/></div>
+                  <div><img className="poorImages" src={poor} alt="poor"/></div>
                   <div><span className="mainTitle">{item.caseName}</span></div>
                   <div><span className="title">category: </span>{item.category}</div>
-                  <div><span className="title">Privacy: </span> {item.isPrivate=='Yes' ? <span>Private</span> : <span>Not Private</span>}</div>
+                  <div><span className="title">Privacy: </span> {item.isPrivate =='Yes' ? <span>Private</span> : <span>Not Private</span>}</div>
                   <div>
                     <span className="title">Needed Amount: </span>{item.neededAmount}.JOD</div>
                   <div>

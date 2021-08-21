@@ -4,12 +4,12 @@ const jwt = require("jsonwebtoken");
 
 // users schema
 const userSchema = new mongoose.Schema({
-  nickName: { type: String, required: true, unique: true },
+  nickName: { type: String, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  age: { type: Number, required: true },
-  city: { type: String, required: true },
-  phoneNo: { type: String, required: true },
+  age: { type: Number},
+  city: { type: String},
+  phoneNo: { type: String },
   IBAN: { type: String, unique: true },
   role: { type: mongoose.Schema.ObjectId, ref: "Role" },
 });

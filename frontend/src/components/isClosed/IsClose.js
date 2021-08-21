@@ -29,7 +29,7 @@ export default function IsClose({ token,isAdmin }) {
             return (
               <div className="myCaseContainer" key={i}>
                 <div className="caseInform" >
-                  <div><img className="poorImages" src={poor}/></div>
+                  <div><img className="poorImages" src={poor} alt=""/></div>
                   <div><span className="mainTitle">{item.caseName}</span></div>
                   <div><span className="title">category: </span>{item.category}</div>
                   <div><span className="title">Is Closed: </span> {item.isClosed ? <span>Closed</span> : <span>Not Closed</span>}</div>
