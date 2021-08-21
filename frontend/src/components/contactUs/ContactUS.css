@@ -41,7 +41,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   gap: 150px;
 }
 .contact-details {
@@ -71,8 +71,9 @@
   top: 0;
 }
 .contact-form {
-  width: 50%;
-  margin-left: 20px;
+
+  width: 85vw;
+  margin-left: -75px;
 
 }
 
@@ -108,9 +109,30 @@
   background-color: #14b761;
   color:white;
 
+
+.contact-details {
+  width: 85vw;
 }
 
 .btn:hover {
   cursor: pointer;
   background-color: #ffc039;
+}
+
+@media screen and (max-width: 350px) {
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 350px) {
+  .contact-section {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-around;
+    align-items: center; */
+    flex-direction: column
+  }
 }
