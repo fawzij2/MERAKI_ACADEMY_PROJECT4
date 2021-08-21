@@ -3,7 +3,6 @@ import "./cases_search.css";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import poor from './poor2.jpg'
-
 const CaseSearch = ({ setPath, token }) => {
   const { categeory } = useParams();
   const history = useHistory();
@@ -26,10 +25,8 @@ const CaseSearch = ({ setPath, token }) => {
       setSkip(skip - limit);
     }
   };
-  
   useEffect(() => {
     // setPath(location.pathname);
-
     axios
       .get(`http://localhost:5000/cases/categeories/${categeory}`)
       .then((result) => {
@@ -152,5 +149,4 @@ const CaseSearch = ({ setPath, token }) => {
     </>
   );
 };
-
 export default CaseSearch;

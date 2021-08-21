@@ -1,14 +1,15 @@
 .Logo{
-    padding: 1% 1%;
+    height: 50px;
+    text-align: center;
     overflow: hidden;
-    background-color: rgba(66, 65, 65, 0.137);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1% ;
-    width: 100%;
-    border: black solid 2px;
-    border-bottom:none;
-    color: #FFFFFF;
-    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #f0c509, 0 0 30px #c6c7c7, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+    align-content: center;
+    background-image: linear-gradient(to left, #1f2637, #393d4b, #545661, #6f7077, #8b8b8e);    color: #FFFFFF;
+   
 }
+
+/* .Logo img{
+    z-index: 7;
+    height: 45px;
+    width: 45px;
+
+} */

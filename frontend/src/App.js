@@ -9,19 +9,21 @@ import Register from "./components/auth/register/index";
 import CaseSearch from "./components/cases_search";
 import Update from './components/case/updateCase'
 import IsClose from './components/isClosed/IsClose'
-import Header from './components/Header/header'
+import Header from './components/header/header'
 import CreditCardAdd from "./components/add_creditcard/index";
 import AddNewCase from "./components/AddNewCase/index";
 import Profile from "./components/Profile/index";
 import DonationConfirm from "./components/donation_confirmed/index"
+import UpdateProfile from "./components/UpdateProfile"
+
 
 const App = () => {
   const [path, setPath] = useState("");
   const [token, setToken] = useState("");
   const [nickName, setNickName] = useState("");
   const [homePageSection, setHomePageSection] = useState("");
-  const [isAdmin,setAdmin] = useState(false);
-  console.log("In APP : ",isAdmin);
+  const [isAdmin, setAdmin] = useState(false);
+  console.log("In APP : ", isAdmin);
 
   useEffect(() => {
     if (localStorage.getItem("token")) setToken(localStorage.getItem("token"));
@@ -36,23 +38,36 @@ const App = () => {
   return (
     <>
       <div className="App">
-
         <Header />
-        <Navigation token={token} setHomePageSection={setHomePageSection} setToken={setToken} setAdmin={setAdmin} isAdmin={isAdmin}/>
-        <Route exact path="/" render={() => <Home setPath={setPath} homePageSection={homePageSection} />} />
+        <Navigation
+          token={token}
+          setHomePageSection={setHomePageSection}
+          setToken={setToken}
+          setAdmin={setAdmin}
+          isAdmin={isAdmin}
+        />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Home setPath={setPath} homePageSection={homePageSection} />
+          )}
+        />
 
         <Route
           exact
           path="/login"
-          render={() => <Login path={path} setToken={setToken} setAdmin={setAdmin}/>}
+          render={() => (
+            <Login path={path} setToken={setToken} setAdmin={setAdmin} />
+          )}
         />
 
         <Route
           exact
           path="/isClosed"
-          render={() => <IsClose token={token} isAdmin={isAdmin}/>}
+          render={() => <IsClose token={token} isAdmin={isAdmin} />}
         />
-        
+
         <Route exact path="/register" render={() => <Register />} />
         <Route
           exact
@@ -68,7 +83,7 @@ const App = () => {
         <Route
           exact
           path="/profile"
-          render={() => <Profile nickName={nickName} />}
+          render={() => <Profile nickName={nickName} token={token} />}
         />
         <Route
           exact
@@ -78,6 +93,7 @@ const App = () => {
         {/* <Route exact path="/cases/create" component={AddNewCase} /> */}
         <Route exact path="/cases/:id/donate" render={()=><CreditCardAdd token={token}/>} />
         <Route exact path="/donation_confirmed" component={DonationConfirm}/>
+        <Route exact path="/profile/update" render={()=><UpdateProfile token={token}/>} />
       </div>
     </>
   );
