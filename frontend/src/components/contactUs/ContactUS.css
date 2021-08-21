@@ -53,12 +53,13 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   gap: 150px;
 }
 
 .contact-form {
-  width: 50%;
+  width: 85vw;
+  margin-left: -75px;
 }
 
 .contact-form h1 {
@@ -77,7 +78,7 @@ p {
 }
 
 .contact-details {
-  width: 50%;
+  width: 85vw;
 }
 
 .btn:hover {
@@ -87,4 +88,22 @@ p {
 
 input {
   padding: 10px;
+}
+
+@media screen and (max-width: 350px) {
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 350px) {
+  .contact-section {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-around;
+    align-items: center; */
+    flex-direction: column
+  }
 }
