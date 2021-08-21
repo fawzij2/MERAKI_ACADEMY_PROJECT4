@@ -108,7 +108,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #14b761;
   color:white;
-
+}
 
 .contact-details {
   width: 85vw;
@@ -133,6 +133,10 @@
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-around;
     align-items: center; */
+    gap: 40px;
     flex-direction: column
+  }
+  .vl{
+    display:none;
   }
 }

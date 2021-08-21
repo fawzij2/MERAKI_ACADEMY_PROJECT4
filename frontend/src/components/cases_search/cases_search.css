@@ -1,5 +1,6 @@
 .caseSearch {
-  width: 100vw;
+  /* width: 100vw; */
+  overflow: hidden;
 }
 .searchBarSection {
   display: flex;
@@ -24,11 +25,11 @@
 }
 
 #sorting {
-  width: 110%;
+  width: 100%;
 }
 
 #donations {
-  width: 110%;
+  width: 100%;
 }
 
 .searchBarParts {
@@ -138,13 +139,13 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1300px) and (min-width: 890px) {
+@media screen and (max-width: 1300px) and (min-width: 650px) {
   .caseCards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 650px) {
   .caseCards {
     grid-template-columns: 1fr;
   }

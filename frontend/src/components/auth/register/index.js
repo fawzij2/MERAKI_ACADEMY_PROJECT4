@@ -19,15 +19,6 @@ export default function Register() {
   const [registerMessage, setRegisterMessage] = useState("");
 
   const postRegister = () => {
-    console.log({
-      nickName,
-      email,
-      password,
-      age,
-      city,
-      phoneNo,
-      IBAN,
-    });
 
     if (password === confirmPassword) {
       axios
@@ -50,7 +41,7 @@ export default function Register() {
           }
         })
         .catch((err) => {
-          throw err;
+          console.log(err.response.data);
         });
     } else {
       setRegisterMessage("please check the password");
