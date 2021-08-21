@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
-import "./closedCases.css";
+import "../cases_search/cases_search.css";
 import poor from './poor3.jpg'
 
 export default function ClosedCases({ setPath }) {

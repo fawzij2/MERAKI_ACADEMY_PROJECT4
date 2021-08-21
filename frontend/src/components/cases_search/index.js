@@ -35,7 +35,7 @@ const CaseSearch = ({ setPath, token }) => {
       });
   }, []);
   useEffect(() => {
-    console.log(donation);
+    // console.log(donation);
     axios
       .post(`http://localhost:5000/cases/categeories/${categeory}`, {
         donationNeeded: Number(donation),
@@ -47,7 +47,7 @@ const CaseSearch = ({ setPath, token }) => {
       .then((result) => {
         setDocCount(result.data.docCount);
         setCases(result.data.result);
-        console.log(result.data);
+        // console.log(result.data);
       })
       .catch((err) => {
         console.log(err.response);
@@ -88,7 +88,8 @@ const CaseSearch = ({ setPath, token }) => {
               <option value="lowHigh">Low to High</option>
             </select>
           </div>
-          <div className="searchBar">
+          <div className="searchDiv">
+            Search
             <input
               className="searchBar"
               placeholder="Enter a case name"
