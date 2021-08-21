@@ -10,8 +10,9 @@ const userSchema = new mongoose.Schema({
   age: { type: Number},
   city: { type: String},
   phoneNo: { type: String },
-  IBAN: { type: String, unique: true },
-  role: { type: mongoose.Schema.ObjectId, ref: "Role" },
+  IBAN: { type: String },
+  role: { type: mongoose.Schema.ObjectId, ref: "Role",default: '60c460bb1d246d3110e885fa'
+},
 });
 
 

@@ -7,7 +7,6 @@ const options = {
   useUnifiedTopology: true,
   useFindAndModify: false,
 };
-console.log(process.env.DB_URI);
 // connecting mongoose
 mongoose
   .connect(process.env.DB_URI, options)
