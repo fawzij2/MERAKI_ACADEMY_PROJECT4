@@ -1,12 +1,26 @@
-import react from 'react';
+import React from 'react';
 import './header.css'
-import logo from './logo.png'
+import { Link } from "react-router-dom";
+import logo from './logo .png'
 
 
 const Header = ()=>{
     return(
         <div className="Logo">
-            <img src={logo}/><h1>BLISS</h1>
+        <Link to="/" className="Link">
+        {" "}
+        <img
+          src={logo } 
+          style={{
+            hight: "50px",
+            width: "50px",
+            cursor:"pointer" ,
+            zIndex:7
+          }}alt="logo"
+        />
+      </Link>
+          
+            
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import SimpleImageSlider from "react-simple-image-slider";
 import "./home.css";
 import Volunteers from "../volunteers/index";
@@ -13,47 +13,48 @@ import building from "./building.png";
 import ContactUs from "../contactUs/index";
 import { useHistory, Link } from "react-router-dom";
 import Footer from "../footer/index";
-import {scroller} from "react-scroll";
+import { scroller } from "react-scroll";
 
-const Home = ({setPath, homePageSection}) => {
-
+const Home = ({ setPath, homePageSection }) => {
   const images = [{ url: photo2 }, { url: photo3 }, { url: photo1 }];
   const history = useHistory();
-  setPath("/")
+  setPath("/");
 
   useEffect(() => {
-    if (homePageSection !== ""){
-      console.log(homePageSection)
-      scroller.scrollTo(homePageSection,{smooth:true})
+    if (homePageSection !== "") {
+      console.log(homePageSection);
+      scroller.scrollTo(homePageSection, { smooth: true });
     }
-  }, [homePageSection])
+  }, [homePageSection]);
 
+  
   return (
     <div>
       <SimpleImageSlider
-        width={1349}
+       style={{ margin: '0 auto', border: '1px solid rgb(31, 38, 59)' ,opacity:'0.8'}}
+        width={1260}
         height={550}
+        startIndex={0}
         images={images}
-        showBullets={true}
         slideDuration={0.5}
-        navStyle={1}
+        navStyle={2}
+        navSize={50}
+        showNavs={true}
+        useGPURender={true}
+        bgColor={"rgb(31, 38, 59)"}
       />
-      <hr />
+      <br/>
       <About />
-      <hr />
-      <div className="categories" id="categories">
+      <br/>
+      <div id="categories" className="categories" >
         <div className="introduction">
+        <h1>Cases</h1>
           <p className="introText">
             We support a myriad of causes. Choose any of the categories to see
             them.
-            <br /> Or you can choose other categories{" "}
-            <Link
-              className="Link"
-             
-                to ="/cases/categeories/General"
-             
-            >
-              Here.
+             Or you can choose other categories{" "}
+            <Link className="Link" to="/cases/categeories/General">
+              here.
             </Link>
           </p>
           <div
@@ -62,7 +63,7 @@ const Home = ({setPath, homePageSection}) => {
               history.push("/cases/categeories/General");
             }}
           >
-            <p className="text">Other categories</p>
+            <p className="text">Other Categories</p>
           </div>
         </div>
         <div className="mainCategories">
@@ -72,8 +73,8 @@ const Home = ({setPath, homePageSection}) => {
               history.push(`/cases/categeories/Education`);
             }}
           >
-            <img src={educational} className="categoriesPics"></img>
-            <p className="text">educational</p>
+            <img src={educational} className="categoriesPics" alt='educational'></img>
+            <p className="text">Educational</p>
           </div>
           <div
             className="categoryBox2"
@@ -81,8 +82,8 @@ const Home = ({setPath, homePageSection}) => {
               history.push(`/cases/categeories/Treatment`);
             }}
           >
-            <img src={medical} className="categoriesPics"></img>
-            <p className="text">health</p>
+            <img src={medical} className="categoriesPics" alt='medical'></img>
+            <p className="text">Health</p>
           </div>
           <div
             className="categoryBox2"
@@ -90,8 +91,8 @@ const Home = ({setPath, homePageSection}) => {
               history.push(`/cases/categeories/Dept`);
             }}
           >
-            <img src={debt} className="categoriesPics"></img>
-            <p className="text">debts</p>
+            <img src={debt} className="categoriesPics" alt='dept'></img>
+            <p className="text">Debts</p>
           </div>
           <div
             className="categoryBox1"
@@ -99,23 +100,16 @@ const Home = ({setPath, homePageSection}) => {
               history.push(`/cases/categeories/Building`);
             }}
           >
-            <img src={building} className="categoriesPics"></img>
-            <p className="text">rebuilding</p>
+            <img src={building} className="categoriesPics" alt='building'></img>
+            <p className="text">Rebuilding</p>
           </div>
         </div>
       </div>
-      <hr />
+      <br />
       <Volunteers />
-      {/* <div className="colunteers sections">our volunteers</div> */}
-      {/* <Contact /> */}
-      <hr />
-      <div className="contact-section">
+      <br/>
         <ContactUs />
-      </div>
-      {/* <div className="copyrights-section">copyrights go here</div> */}
-      <div>
         <Footer />
-      </div>
     </div>
   );
 };

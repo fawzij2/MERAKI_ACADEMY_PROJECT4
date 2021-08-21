@@ -7,8 +7,8 @@ import "./ContactUS.css";
 
 const Result = () => {
   return (
-    <div>
-      <p className="contactResult">
+    <div className="contactResult">
+      <p>
         Your Message was sent successfully! we will contact you as soon as
         possible{" "}
       </p>
@@ -19,7 +19,6 @@ const Result = () => {
 const ContactUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [result, setResult] = useState(false);
 
@@ -29,11 +28,9 @@ const ContactUs = () => {
   const contactDetails = {
     name: name,
     email: email,
-    subject: subject,
     message: message,
   };
   const sendEmail = (e) => {
-    console.log("=========================================================");
     e.preventDefault();
     emailjs.send(service_id, template_id, contactDetails, user_id).then(
       (result) => {
@@ -45,26 +42,26 @@ const ContactUs = () => {
       }
     );
   };
-  
+
   setTimeout(() => {
-    setResult(false)
+    setResult(false);
   }, 5000);
 
   return (
-    <div className="container" id="contactUs">
+    <div id="contactUs" className="container" >
       <div className="contact-section">
         <div className="contact-details">
-          <h1>Contact Details:</h1>
+          <h1>Contact Details</h1>
           <p>
-            Here you can find all the needed information for <br />
-            you to contact with us , be comfortable to notify us
-            <br /> with your suggestions and objections.
+            Here you can find all the needed information for you to contact with
+            us , be comfortable to notify us with your suggestions and
+            objections.
           </p>
           <table>
             <tbody>
               <tr>
                 <td>
-                  <img className="icon" src={location} />
+                  <img className="icon" src={location} alt="location" />
                 </td>
                 <td>
                   <span className="head">Location</span>
@@ -76,7 +73,7 @@ const ContactUs = () => {
               </tr>
               <tr>
                 <td>
-                  <img className="icon" src={phone} />
+                  <img className="icon" src={phone} alt="phone" />
                 </td>
                 <td>
                   <span className="head">Phone</span>
@@ -86,7 +83,7 @@ const ContactUs = () => {
               </tr>
               <tr>
                 <td>
-                  <img className="icon" src={mail} />
+                  <img className="icon" src={mail} alt="mail" />
                 </td>
                 <td>
                   <span className="head">Email</span>
@@ -97,16 +94,14 @@ const ContactUs = () => {
             </tbody>
           </table>
         </div>
+        <div class="vl"></div>
         <div className="contact-form">
-          <h1>Contact Form:</h1>
+          <h1>Contact Form</h1>
           <table>
             <tbody>
               <tr>
                 <td>
-                  <label>First Name:</label>
-                </td>
-                <td>
-                  <label>Last Name:</label>
+                  <label> Name:</label>
                 </td>
               </tr>
               <tr>
@@ -114,27 +109,25 @@ const ContactUs = () => {
                   <input
                     type="text"
                     name="name"
-                    placeholder="First Name"
+                    placeholder=" Name"
                     required
                     onChange={(e) => setName(e.target.value)}
                   />
                 </td>
-                <td>
-                  <input
-                    type="text"
-                    name="lname"
+                <textarea
+                    name="message"
+                    placeholder="message"
                     required
-                    placeholder="Last Name"
+                    onChange={(e) => setMessage(e.target.value)}
                   />
-                </td>
               </tr>
               <tr>
                 <td>
                   <label>Email:</label>
                 </td>
-                <td>
+                {/* <td>
                   <label>Subject:</label>
-                </td>
+                </td> */}
               </tr>
               <tr>
                 <td>
@@ -147,26 +140,7 @@ const ContactUs = () => {
                   />
                 </td>
                 <td>
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                    required
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <textarea
-                    name="message"
-                    placeholder="message"
-                    required
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </td>
-                <td>
-                  <input
+                <input
                     className="btn"
                     type="submit"
                     value="Send"
